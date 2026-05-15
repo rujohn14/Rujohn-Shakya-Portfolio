@@ -1,16 +1,555 @@
-// ========================= index.html =========================
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rujohn Shakya | Cybersecurity Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Rujohn Shakya cybersecurity portfolio website." />
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --card: #101d2e;
+      --card2: #13243a;
+      --text: #f5f8fc;
+      --muted: #b5c3d1;
+      --accent: #38e8c8;
+      --accent2: #7c5cff;
+      --line: rgba(255, 255, 255, 0.1);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(56, 232, 200, 0.16), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(124, 92, 255, 0.16), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 90%);
+      margin: auto;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      width: min(1180px, 90%);
+      margin: auto;
+      padding: 26px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #06101d;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      padding: 55px 0 95px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      border: 1px solid rgba(56, 232, 200, 0.35);
+      background: rgba(56, 232, 200, 0.08);
+      border-radius: 999px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 8px rgba(56, 232, 200, 0.12);
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: #cbd7e4;
+      max-width: 690px;
+      font-size: 1.12rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 21px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06101d;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 680px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(16, 29, 46, 0.78);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .profile-box {
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(19,36,58,0.95), rgba(8,17,31,0.95));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-box:before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(56, 232, 200, 0.18);
+      top: -80px;
+      right: -80px;
+      filter: blur(10px);
+    }
+
+    .terminal {
+      position: relative;
+      background: #050d18;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #ef476f;
+    }
+
+    .dot:nth-child(2) { background: #ffd166; }
+    .dot:nth-child(3) { background: var(--accent); }
+
+    .terminal-body {
+      padding: 22px;
+      font-family: "Courier New", monospace;
+      color: #d7fff8;
+      font-size: 0.95rem;
+    }
+
+    .terminal-body p {
+      margin-bottom: 10px;
+    }
+
+    .terminal-body span {
+      color: var(--accent);
+    }
+
+    .quick-info {
+      position: relative;
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .quick-info h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .quick-info ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: #d9e4ed;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      margin-bottom: 42px;
+    }
+
+    .section-title small {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      max-width: 850px;
+      margin-top: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 760px;
+      margin-top: 12px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(16, 29, 46, 0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(56, 232, 200, 0.35);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(56, 232, 200, 0.1);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 24px;
+      background: rgba(16, 29, 46, 0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .date {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-content h4 {
+      color: #d4dfeb;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .timeline-content ul {
+      margin-left: 18px;
+      display: grid;
+      gap: 7px;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 232, 200, 0.24);
+      background: rgba(56, 232, 200, 0.08);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .skill-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .project-card {
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(56,232,200,0.15), rgba(124,92,255,0.14));
+      border: 1px solid rgba(56, 232, 200, 0.25);
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+      color: #d9e4ed;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      outline: none;
+      font: inherit;
+      margin-bottom: 12px;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(56, 232, 200, 0.45);
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: rgba(5, 13, 24, 0.5);
+    }
+
+    @media (max-width: 950px) {
+      .hero,
+      .grid-3,
+      .grid-2,
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      nav,
+      .container {
+        width: 92%;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .card,
+      .timeline-item,
+      .profile-box {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header id="home">
     <nav>
-      <div class="logo">RUJOHN SHAKYA</div>
+      <a href="#home" class="logo"><span>RS</span> Rujohn Shakya</a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#education">Education</a>
@@ -21,268 +560,405 @@
       </div>
     </nav>
 
-    <div class="hero">
+    <div class="container hero">
       <div>
-        <span class="status">Cybersecurity Student · Sydney, NSW</span>
-        <h1>Building safer digital systems with <span>analysis, defence & response.</span></h1>
+        <div class="badge"><span class="badge-dot"></span> Cybersecurity Student · Sydney, NSW</div>
+        <h1>Cybersecurity portfolio focused on <span class="gradient">defence, testing & response.</span></h1>
         <p>
-          I am a dedicated cybersecurity student with hands-on experience in incident response,
-          penetration testing, SOC operations, digital forensics, and cloud security.
+          I am a passionate and dedicated cybersecurity student with a strong foundation in computing and hands-on
+          experience in incident response, penetration testing, SOC operations, and digital forensics. I am seeking
+          opportunities to prove my skills, learn from experienced professionals, and grow into a trusted cybersecurity expert.
         </p>
+
         <div class="buttons">
-          <a href="#experience" class="btn btn-primary">View Experience</a>
+          <a href="#projects" class="btn btn-primary">View My Work</a>
           <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>2026</strong>
+            <span>Bachelor of Cyber Security and Behaviour</span>
+          </div>
+          <div class="stat">
+            <strong>CCNA</strong>
+            <span>Introduction to Networking</span>
+          </div>
+          <div class="stat">
+            <strong>SOC</strong>
+            <span>Monitoring, triage and response</span>
+          </div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <h3>Quick Profile</h3>
-        <ul>
-          <li><strong>Current Study:</strong> Bachelor of Cyber Security and Behaviour</li>
-          <li><strong>University:</strong> Western Sydney University</li>
-          <li><strong>Focus:</strong> SOC, Incident Response, Penetration Testing</li>
-          <li><strong>Location:</strong> Sydney, NSW</li>
-          <li><strong>Email:</strong> rujohn.shakya123@gmail.com</li>
-        </ul>
-      </div>
+      <aside class="profile-box">
+        <div class="terminal">
+          <div class="terminal-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="terminal-body">
+            <p><span>$</span> whoami</p>
+            <p>Rujohn Shakya</p>
+            <p><span>$</span> focus</p>
+            <p>SOC · Incident Response · Penetration Testing · Digital Forensics</p>
+            <p><span>$</span> tools</p>
+            <p>Splunk · Sentinel · Burp Suite · Metasploit · Wireshark</p>
+          </div>
+        </div>
+
+        <div class="quick-info">
+          <h3>Quick Info</h3>
+          <ul>
+            <li><strong>Email:</strong> rujohn.shakya123@gmail.com</li>
+            <li><strong>Phone:</strong> 0416 637 663</li>
+            <li><strong>LinkedIn:</strong> linkedin.com/in/rujohn-shakya</li>
+            <li><strong>Location:</strong> Sydney, NSW</li>
+          </ul>
+        </div>
+      </aside>
     </div>
   </header>
 
-  <section id="about">
-    <div class="section-title">
-      <small>About Me</small>
-      <h2>A motivated cybersecurity learner with practical experience.</h2>
-    </div>
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <small>About Me</small>
+          <h2>A practical cyber learner with a computing background.</h2>
+          <p>
+            This portfolio uses a different layout and visual style from the reference website. It is designed around
+            a cyber-terminal hero, timeline experience section, skill cards, and project-style blocks.
+          </p>
+        </div>
 
-    <div class="about-grid">
-      <div class="card">
-        <h3>Who I Am</h3>
-        <p>
-          I am passionate about cybersecurity and computing, with a strong interest in protecting
-          systems, analysing threats, and supporting organisations during cyber incidents.
-        </p>
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">🛡️</div>
+            <h3>Cyber Defence</h3>
+            <p>
+              Interested in threat detection, alert triage, SOC monitoring, and incident response processes that help
+              organisations respond to cyber incidents safely and effectively.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🔍</div>
+            <h3>Security Testing</h3>
+            <p>
+              Hands-on experience with vulnerability assessment and penetration testing using Kali Linux, Burp Suite,
+              Metasploit, Nmap, SQLMap, Hydra, and Wireshark.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🤝</div>
+            <h3>Professional Strengths</h3>
+            <p>
+              Strong communication, effective time management, logical problem-solving, calmness under pressure,
+              multitasking, accuracy, teamwork, and a positive attitude.
+            </p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Career Direction</h3>
-        <p>
-          Interested in SOC operations, incident response, penetration testing, digital forensics,
-          cloud security, and risk management.
-        </p>
+    <section id="education">
+      <div class="container">
+        <div class="section-title">
+          <small>Education & Certification</small>
+          <h2>My academic path and learning foundation.</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="date">2026</div>
+            <div class="timeline-content">
+              <h3>Bachelor of Cyber Security and Behaviour</h3>
+              <h4>Western Sydney University</h4>
+              <p>
+                Studying cybersecurity concepts, cyber behaviour, incident response, digital forensics,
+                networking, system security, and risk management.
+              </p>
+              <div class="tags">
+                <span class="tag">Cyber Security</span>
+                <span class="tag">Behaviour</span>
+                <span class="tag">Incident Response</span>
+                <span class="tag">Digital Forensics</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="date">2022</div>
+            <div class="timeline-content">
+              <h3>Bachelor of Computer Science</h3>
+              <h4>Islington College, Nepal</h4>
+              <p>
+                Built a strong foundation in computing, programming, technical problem-solving, and system concepts.
+              </p>
+              <div class="tags">
+                <span class="tag">Computer Science</span>
+                <span class="tag">Programming</span>
+                <span class="tag">Computing</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="date">Certification</div>
+            <div class="timeline-content">
+              <h3>Cisco CCNAv7: Introduction to Networking</h3>
+              <h4>Cisco Networking Academy</h4>
+              <p>
+                Completed networking training covering network fundamentals, IP addressing, routing,
+                switching, and basic network security concepts.
+              </p>
+              <div class="tags">
+                <span class="tag">Cisco</span>
+                <span class="tag">Networking</span>
+                <span class="tag">Network Security</span>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Personal Strengths</h3>
-        <p>
-          Strong communication, problem-solving, teamwork, time management, and adaptability.
-        </p>
+    <section id="experience">
+      <div class="container">
+        <div class="section-title">
+          <small>Work Experience</small>
+          <h2>Experience across cybersecurity and customer service.</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="date">Jul 2025 – Nov 2025</div>
+            <div class="timeline-content">
+              <h3>Western Australian Cyber Security Centre Aid and Community Engagement</h3>
+              <h4>Western Sydney University</h4>
+              <ul>
+                <li>Supported SMEs with incident response, including triage, containment, and remediation of ransomware, phishing, and data breach incidents.</li>
+                <li>Applied governance, risk, and compliance standards including ISO 27001, SOC 2, and Essential 8 through policy drafting and audit planning.</li>
+                <li>Performed penetration testing and ransomware readiness assessments, improving response capability and reducing attack exposure.</li>
+                <li>Conducted SOC monitoring through Splunk, supporting threat identification and escalation.</li>
+                <li>Used Microsoft Sentinel, Defender, Azure AD, and CrowdStrike Falcon for threat hunting, log analysis, and incident remediation.</li>
+                <li>Presented a capstone security project to an industry review panel.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Incident Response</span>
+                <span class="tag">Splunk</span>
+                <span class="tag">Sentinel</span>
+                <span class="tag">CrowdStrike</span>
+                <span class="tag">Risk & Compliance</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="date">Nov 2023 – Jan 2024</div>
+            <div class="timeline-content">
+              <h3>Customer Service Officer</h3>
+              <h4>Emerico Clothing, Wollongong</h4>
+              <ul>
+                <li>Served customers in a polite and professional manner.</li>
+                <li>Assisted customers in locating products and answering questions about quality and pricing.</li>
+                <li>Operated POS systems for transactions, refunds, and inventory checks.</li>
+                <li>Used Microsoft Word, Excel, and Outlook for scheduling, appointment management, and communication.</li>
+                <li>Conducted outbound customer engagement through phone calls and email correspondence.</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Customer Service</span>
+                <span class="tag">Communication</span>
+                <span class="tag">POS</span>
+                <span class="tag">Microsoft Office</span>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills">
-    <div class="section-title">
-      <small>Skills</small>
-      <h2>Cybersecurity & Technical Skills</h2>
-    </div>
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <small>Skills & Tools</small>
+          <h2>Technical skills across cyber defence, testing, forensics, and infrastructure.</h2>
+        </div>
 
-    <div class="skill-grid">
-      <div class="card">
-        <h3>SOC & Security</h3>
-        <p>Splunk, Wazuh, SIEM Monitoring, Threat Detection, Incident Response</p>
+        <div class="grid-3">
+          <article class="card skill-card">
+            <h3>Cyber Security & SOC</h3>
+            <p>Splunk Enterprise, Elastic Stack, Wazuh, SIEM monitoring, threat detection, alert triage, and incident response.</p>
+            <div class="bar"><span style="width: 88%;"></span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Penetration Testing</h3>
+            <p>Kali Linux, Burp Suite, Metasploit, Nmap, Hydra, SQLMap, Wireshark, and OWASP Top 10 testing.</p>
+            <div class="bar"><span style="width: 84%;"></span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Digital Forensics</h3>
+            <p>FTK Imager, Autopsy, Process Explorer, Chainsaw, IOC detection, evidence acquisition, and evidence analysis.</p>
+            <div class="bar"><span style="width: 78%;"></span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Cloud & Infrastructure</h3>
+            <p>Microsoft Azure, Azure AD, RBAC, identity and access control, Windows Server, DNS, DHCP, and VPN.</p>
+            <div class="bar"><span style="width: 76%;"></span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Systems & Networking</h3>
+            <p>Linux, Kali, Windows Server/Client, TCP/IP, firewall rules, endpoint security, and networking basics.</p>
+            <div class="bar"><span style="width: 82%;"></span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Programming</h3>
+            <p>Java, Python, R programming, PowerShell scripting, and Bash scripting.</p>
+            <div class="bar"><span style="width: 74%;"></span></div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Penetration Testing</h3>
-        <p>Kali Linux, Burp Suite, Metasploit, SQLMap, Wireshark, Nmap</p>
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <small>Projects & Practical Work</small>
+          <h2>Hands-on cybersecurity practice and applied learning.</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="card project-card">
+            <div>
+              <div class="icon">📊</div>
+              <h3>Capstone Security Project</h3>
+              <p>
+                Presented a security project to an industry review panel, demonstrating technical depth,
+                practical thinking, and real-world cybersecurity impact.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">Cybersecurity</span>
+              <span class="tag">Presentation</span>
+              <span class="tag">Industry Panel</span>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="icon">🚨</div>
+              <h3>Incident Response Practice</h3>
+              <p>
+                Worked with ransomware, phishing, and data breach scenarios including triage, containment,
+                remediation, documentation, and escalation.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">Ransomware</span>
+              <span class="tag">Phishing</span>
+              <span class="tag">Remediation</span>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="icon">🧪</div>
+              <h3>Penetration Testing Labs</h3>
+              <p>
+                Practised vulnerability assessment and exploitation using tools such as Kali Linux,
+                Burp Suite, Metasploit, Nmap, SQLMap, Hydra, and Wireshark.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">OWASP Top 10</span>
+              <span class="tag">Burp Suite</span>
+              <span class="tag">Metasploit</span>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Programming</h3>
-        <p>Java, Python, R, PowerShell, Bash</p>
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <small>Contact</small>
+          <h2>Let’s connect.</h2>
+          <p>
+            I am open to entry-level cybersecurity roles, internships, SOC analyst opportunities,
+            graduate programs, and projects where I can apply and grow my skills.
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
+          <article class="card contact-card">
+            <h3>Contact Details</h3>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:rujohn.shakya123@gmail.com">rujohn.shakya123@gmail.com</a></li>
+              <li><strong>Phone:</strong> <a href="tel:0416637663">0416 637 663</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rujohn-shakya-8164732b6/" target="_blank">linkedin.com/in/rujohn-shakya</a></li>
+              <li><strong>Location:</strong> Sydney, NSW, Australia</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Send a Message</h3>
+            <form>
+              <input type="text" placeholder="Your Name" aria-label="Your Name" />
+              <input type="email" placeholder="Your Email" aria-label="Your Email" />
+              <textarea rows="6" placeholder="Your Message" aria-label="Your Message"></textarea>
+              <button type="button" class="btn btn-primary">Send Message</button>
+            </form>
+            <p class="note">
+              Note: This form is front-end only. To receive messages, connect it with Formspree, Netlify Forms, or EmailJS.
+            </p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="section-title">
-      <small>Contact</small>
-      <h2>Let’s connect.</h2>
-    </div>
-
-    <div class="contact-card">
-      <p><strong>Email:</strong> rujohn.shakya123@gmail.com</p>
-      <p><strong>Phone:</strong> 0416 637 663</p>
-      <p><strong>LinkedIn:</strong> linkedin.com/in/rujohn-shakya</p>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2026 Rujohn Shakya · Cybersecurity Portfolio</p>
+    <div class="container">
+      <p>© 2026 Rujohn Shakya · Cybersecurity Portfolio · Sydney, Australia</p>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.forEach(item => item.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    const animatedItems = document.querySelectorAll(".card, .timeline-item, .profile-box");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.12 });
+
+    animatedItems.forEach(item => {
+      item.style.opacity = "0";
+      item.style.transform = "translateY(18px)";
+      item.style.transition = "0.55s ease";
+      observer.observe(item);
+    });
+  </script>
 </body>
 </html>
-
-
-// ========================= style.css =========================
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #08111f;
-  color: #f4f7fb;
-  line-height: 1.6;
-}
-
-header {
-  min-height: 100vh;
-  padding: 30px 8%;
-  background:
-    radial-gradient(circle at top left, rgba(40, 214, 199, 0.25), transparent 35%),
-    linear-gradient(135deg, #08111f 0%, #0f2741 55%, #10273a 100%);
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 80px;
-}
-
-.logo {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #55f0df;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.status {
-  display: inline-block;
-  padding: 8px 14px;
-  border: 1px solid #55f0df;
-  border-radius: 30px;
-  color: #55f0df;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: 4rem;
-  margin-bottom: 20px;
-}
-
-.hero h1 span {
-  color: #55f0df;
-}
-
-.hero p {
-  color: #d1dbe4;
-  margin-bottom: 20px;
-}
-
-.buttons {
-  display: flex;
-  gap: 15px;
-}
-
-.btn {
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn-primary {
-  background: #55f0df;
-  color: #08111f;
-}
-
-.btn-secondary {
-  border: 1px solid white;
-  color: white;
-}
-
-.hero-card,
-.card,
-.contact-card {
-  background: #101d2e;
-  padding: 25px;
-  border-radius: 20px;
-}
-
-section {
-  padding: 80px 8%;
-}
-
-.section-title {
-  margin-bottom: 40px;
-}
-
-.section-title small {
-  color: #55f0df;
-  text-transform: uppercase;
-}
-
-.about-grid,
-.skill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  nav {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-}
-
-
-// ========================= script.js =========================
-console.log("Portfolio Website Loaded Successfully");
-
-// Smooth active link effect
-const navLinks = document.querySelectorAll('.nav-links a');
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.forEach(nav => nav.classList.remove('active'));
-    link.classList.add('active');
-  });
-});
