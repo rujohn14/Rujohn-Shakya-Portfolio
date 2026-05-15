@@ -1,0 +1,288 @@
+// ========================= index.html =========================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rujohn Shakya | Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="home">
+    <nav>
+      <div class="logo">RUJOHN SHAKYA</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div>
+        <span class="status">Cybersecurity Student · Sydney, NSW</span>
+        <h1>Building safer digital systems with <span>analysis, defence & response.</span></h1>
+        <p>
+          I am a dedicated cybersecurity student with hands-on experience in incident response,
+          penetration testing, SOC operations, digital forensics, and cloud security.
+        </p>
+        <div class="buttons">
+          <a href="#experience" class="btn btn-primary">View Experience</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Quick Profile</h3>
+        <ul>
+          <li><strong>Current Study:</strong> Bachelor of Cyber Security and Behaviour</li>
+          <li><strong>University:</strong> Western Sydney University</li>
+          <li><strong>Focus:</strong> SOC, Incident Response, Penetration Testing</li>
+          <li><strong>Location:</strong> Sydney, NSW</li>
+          <li><strong>Email:</strong> rujohn.shakya123@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="section-title">
+      <small>About Me</small>
+      <h2>A motivated cybersecurity learner with practical experience.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="card">
+        <h3>Who I Am</h3>
+        <p>
+          I am passionate about cybersecurity and computing, with a strong interest in protecting
+          systems, analysing threats, and supporting organisations during cyber incidents.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Career Direction</h3>
+        <p>
+          Interested in SOC operations, incident response, penetration testing, digital forensics,
+          cloud security, and risk management.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Personal Strengths</h3>
+        <p>
+          Strong communication, problem-solving, teamwork, time management, and adaptability.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-title">
+      <small>Skills</small>
+      <h2>Cybersecurity & Technical Skills</h2>
+    </div>
+
+    <div class="skill-grid">
+      <div class="card">
+        <h3>SOC & Security</h3>
+        <p>Splunk, Wazuh, SIEM Monitoring, Threat Detection, Incident Response</p>
+      </div>
+
+      <div class="card">
+        <h3>Penetration Testing</h3>
+        <p>Kali Linux, Burp Suite, Metasploit, SQLMap, Wireshark, Nmap</p>
+      </div>
+
+      <div class="card">
+        <h3>Programming</h3>
+        <p>Java, Python, R, PowerShell, Bash</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">
+      <small>Contact</small>
+      <h2>Let’s connect.</h2>
+    </div>
+
+    <div class="contact-card">
+      <p><strong>Email:</strong> rujohn.shakya123@gmail.com</p>
+      <p><strong>Phone:</strong> 0416 637 663</p>
+      <p><strong>LinkedIn:</strong> linkedin.com/in/rujohn-shakya</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Rujohn Shakya · Cybersecurity Portfolio</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+// ========================= style.css =========================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #08111f;
+  color: #f4f7fb;
+  line-height: 1.6;
+}
+
+header {
+  min-height: 100vh;
+  padding: 30px 8%;
+  background:
+    radial-gradient(circle at top left, rgba(40, 214, 199, 0.25), transparent 35%),
+    linear-gradient(135deg, #08111f 0%, #0f2741 55%, #10273a 100%);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #55f0df;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.status {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #55f0df;
+  border-radius: 30px;
+  color: #55f0df;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: #55f0df;
+}
+
+.hero p {
+  color: #d1dbe4;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: #55f0df;
+  color: #08111f;
+}
+
+.btn-secondary {
+  border: 1px solid white;
+  color: white;
+}
+
+.hero-card,
+.card,
+.contact-card {
+  background: #101d2e;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+section {
+  padding: 80px 8%;
+}
+
+.section-title {
+  margin-bottom: 40px;
+}
+
+.section-title small {
+  color: #55f0df;
+  text-transform: uppercase;
+}
+
+.about-grid,
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+
+// ========================= script.js =========================
+console.log("Portfolio Website Loaded Successfully");
+
+// Smooth active link effect
+const navLinks = document.querySelectorAll('.nav-links a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.forEach(nav => nav.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
