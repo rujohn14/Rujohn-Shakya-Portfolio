@@ -999,8 +999,8 @@
     <section id="projects">
       <div class="container">
         <div class="section-title">
-          <small>Projects & Practical Work</small>
-          <h2>Hands-on cybersecurity practice and applied learning.</h2>
+          <small>Projects & Research</small>
+          <h2>Hands-on cybersecurity research, labs, and practical learning.</h2>
         </div>
 
         <div class="grid-3">
@@ -1010,15 +1010,121 @@
                 <div class="icon">🔬</div>
                 <h3>GorkhaSEC Research</h3>
                 <p class="project-subtitle">Simulated Stress Analysis in Incident Response</p>
+                <p>Published · October 2025 · Western Sydney University</p>
+              </div>
+              <span class="project-status">Capstone Research</span>
+            </div>
+
+            <p>
+              A research-driven capstone investigating how Security Operations Center automated pipelines perform under
+              simultaneous, high-volume cyberattacks. The project built a full virtual SOC environment and stress-tested
+              incident response systems under realistic attack conditions.
+            </p>
+
+            <div class="outcome-box">
+              <strong>Key outcome</strong>
               <p>
-                Presented a security project to an industry review panel, demonstrating technical depth,
-                practical thinking, and real-world cybersecurity impact.
+                Concurrent attack campaigns measurably degraded automation. Triage latency increased by 40%,
+                CPU utilisation peaked at 78%, and false positives nearly doubled. The team proposed the
+                Stress-Resilient Incident Response framework to address these failures.
               </p>
             </div>
+
+            <div class="project-meta">
+              <div class="meta-item">
+                <strong>Company</strong>
+                <span>GorkhaSEC</span>
+              </div>
+              <div class="meta-item">
+                <strong>Supervisor</strong>
+                <span>Robert Beutel</span>
+              </div>
+              <div class="meta-item">
+                <strong>Institution</strong>
+                <span>Western Sydney University</span>
+              </div>
+              <div class="meta-item">
+                <strong>Team</strong>
+                <span>4 Researchers</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="findings-title">Key Research Findings</p>
+              <div class="findings-grid">
+                <div class="finding">
+                  <div class="finding-num">01</div>
+                  <h4>Automation Fragility Under Stress</h4>
+                  <p>40% increase in triage latency and near-double false positives during concurrent multi-vector attacks.</p>
+                </div>
+
+                <div class="finding">
+                  <div class="finding-num">02</div>
+                  <h4>Hybrid Telemetry Has Scalability Limits</h4>
+                  <p>Process Explorer and PCAP produced high-fidelity forensic data but required manual correlation.</p>
+                </div>
+
+                <div class="finding">
+                  <div class="finding-num">03</div>
+                  <h4>Stealth Attack Detection Gaps</h4>
+                  <p>In-memory and non-persistent attacks evaded detection, showing the need for broader SOC telemetry.</p>
+                </div>
+
+                <div class="finding">
+                  <div class="finding-num">04</div>
+                  <h4>SRIR Framework Proposed</h4>
+                  <p>Recommended alert deduplication, adaptive correlation thresholds, load-aware automation tiers, and digital-twin rehearsal.</p>
+                </div>
+              </div>
+            </div>
+
             <div class="tags">
-              <span class="tag">Cybersecurity</span>
-              <span class="tag">Presentation</span>
-              <span class="tag">Industry Panel</span>
+              <span class="tag">VirtualBox</span>
+              <span class="tag">Kali Linux</span>
+              <span class="tag">Metasploit</span>
+              <span class="tag">Splunk Enterprise</span>
+              <span class="tag">Wireshark</span>
+              <span class="tag">Security Onion</span>
+              <span class="tag">Process Explorer</span>
+              <span class="tag">tcpdump</span>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="icon">🏴</div>
+              <h3>50+ CTF Challenges Completed</h3>
+              <p>
+                Active on CyLab Academy, solving challenges across web exploitation, cryptography, digital forensics,
+                reverse engineering, and OSINT.
+              </p>
+
+              <div class="ctf-stats">
+                <div class="ctf-stat">
+                  <strong>50+</strong>
+                  <span>Challenges</span>
+                </div>
+                <div class="ctf-stat">
+                  <strong>5</strong>
+                  <span>Categories</span>
+                </div>
+                <div class="ctf-stat">
+                  <strong>CyLab</strong>
+                  <span>Platform</span>
+                </div>
+              </div>
+
+              <p>
+                Each challenge sharpens real-world offensive and defensive skills beyond the classroom.
+              </p>
+            </div>
+
+            <div class="tags">
+              <span class="tag">Web Exploitation</span>
+              <span class="tag">Cryptography</span>
+              <span class="tag">Digital Forensics</span>
+              <span class="tag">Reverse Engineering</span>
+              <span class="tag">OSINT</span>
             </div>
           </article>
 
@@ -1035,22 +1141,7 @@
               <span class="tag">Ransomware</span>
               <span class="tag">Phishing</span>
               <span class="tag">Remediation</span>
-            </div>
-          </article>
-
-          <article class="card project-card">
-            <div>
-              <div class="icon">🧪</div>
-              <h3>Penetration Testing Labs</h3>
-              <p>
-                Practised vulnerability assessment and exploitation using tools such as Kali Linux,
-                Burp Suite, Metasploit, Nmap, SQLMap, Hydra, and Wireshark.
-              </p>
-            </div>
-            <div class="tags">
-              <span class="tag">OWASP Top 10</span>
-              <span class="tag">Burp Suite</span>
-              <span class="tag">Metasploit</span>
+              <span class="tag">SOC Monitoring</span>
             </div>
           </article>
         </div>
@@ -1082,14 +1173,19 @@
           <article class="card">
             <h3>Send a Message</h3>
             <form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="f5ad640e-dd65-4837-8dca-b11310718f8e">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <textarea name="message" required></textarea>
-  <button type="submit" class="btn btn-primary">Send Message</button>
-</form>
+              <input type="hidden" name="access_key" value="f5ad640e-dd65-4837-8dca-b11310718f8e" />
+              <input type="hidden" name="subject" value="New message from Rujohn's portfolio website" />
+              <input type="hidden" name="from_name" value="Rujohn Shakya Portfolio" />
+
+              <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required />
+              <textarea name="message" rows="6" placeholder="Your Message" aria-label="Your Message" required></textarea>
+
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+
             <p class="note">
-              Your message will be sent directly to my email. After uploading this website, submit one test message and confirm the activation email from FormSubmit.
+              Messages will be sent directly to my email using Web3Forms.
             </p>
           </article>
         </div>
