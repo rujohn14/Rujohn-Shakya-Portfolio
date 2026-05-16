@@ -1081,17 +1081,13 @@
 
           <article class="card">
             <h3>Send a Message</h3>
-            <form action="https://formsubmit.co/rujohn.shakya123@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New Portfolio Website Message" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-
-              <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required />
-              <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required />
-              <textarea name="message" rows="6" placeholder="Your Message" aria-label="Your Message" required></textarea>
-
-              <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
+            <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="f5ad640e-dd65-4837-8dca-b11310718f8e">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit</button>
+</form>
             <p class="note">
               Your message will be sent directly to my email. After uploading this website, submit one test message and confirm the activation email from FormSubmit.
             </p>
