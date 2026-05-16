@@ -443,6 +443,168 @@
       justify-content: space-between;
     }
 
+    .featured-project {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 28px;
+    }
+
+    .project-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .project-header h3 {
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      margin-bottom: 6px;
+    }
+
+    .project-subtitle {
+      color: #d4dfeb;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 232, 200, 0.3);
+      background: rgba(56, 232, 200, 0.08);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .meta-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .meta-item span {
+      color: #d9e4ed;
+      font-size: 0.95rem;
+    }
+
+    .outcome-box {
+      padding: 20px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(56, 232, 200, 0.22);
+      background: rgba(56, 232, 200, 0.06);
+    }
+
+    .outcome-box strong {
+      color: var(--accent);
+    }
+
+    .outcome-box p {
+      color: #d4dfeb;
+      margin-top: 8px;
+    }
+
+    .findings-title {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .findings-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .finding {
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+    }
+
+    .finding-num {
+      color: var(--accent2);
+      font-weight: 900;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .finding h4 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .finding p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .ctf-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .ctf-stat {
+      padding: 16px;
+      border-radius: 16px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+    }
+
+    .ctf-stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 1.6rem;
+      line-height: 1.1;
+    }
+
+    .ctf-stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
     .contact-wrapper {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -514,6 +676,12 @@
       }
 
       .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .project-meta,
+      .findings-grid,
+      .ctf-stats {
         grid-template-columns: 1fr;
       }
 
@@ -836,10 +1004,12 @@
         </div>
 
         <div class="grid-3">
-          <article class="card project-card">
-            <div>
-              <div class="icon">📊</div>
-              <h3>Capstone Security Project</h3>
+          <article class="card featured-project">
+            <div class="project-header">
+              <div>
+                <div class="icon">🔬</div>
+                <h3>GorkhaSEC Research</h3>
+                <p class="project-subtitle">Simulated Stress Analysis in Incident Response</p>
               <p>
                 Presented a security project to an industry review panel, demonstrating technical depth,
                 practical thinking, and real-world cybersecurity impact.
@@ -911,14 +1081,19 @@
 
           <article class="card">
             <h3>Send a Message</h3>
-            <form>
-              <input type="text" placeholder="Your Name" aria-label="Your Name" />
-              <input type="email" placeholder="Your Email" aria-label="Your Email" />
-              <textarea rows="6" placeholder="Your Message" aria-label="Your Message"></textarea>
-              <button type="button" class="btn btn-primary">Send Message</button>
+            <form action="https://formsubmit.co/rujohn.shakya123@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="New Portfolio Website Message" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+
+              <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required />
+              <textarea name="message" rows="6" placeholder="Your Message" aria-label="Your Message" required></textarea>
+
+              <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
             <p class="note">
-              Note: This form is front-end only. To receive messages, connect it with Formspree, Netlify Forms, or EmailJS.
+              Your message will be sent directly to my email. After uploading this website, submit one test message and confirm the activation email from FormSubmit.
             </p>
           </article>
         </div>
