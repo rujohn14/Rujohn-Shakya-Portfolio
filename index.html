@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rujohn Shakya | Cybersecurity</title>
+<meta name="description" content="Rujohn Shakya - IT Support and Cybersecurity portfolio based in Sydney, NSW.">
+<title>Rujohn Shakya | IT Support & Cybersecurity</title>
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
 
   :root {
     --bg: #020810;
@@ -17,8 +19,8 @@
     --purple: #9b5de5;
     --accent2: #7c5cff;
     --text: #c8d8e8;
-    --dim: #4a6070;
-    --line: rgba(255,255,255,0.07);
+    --dim: #64798b;
+    --line: rgba(255,255,255,0.08);
     --glow-cyan: 0 0 20px #00f5ff66, 0 0 60px #00f5ff22;
     --glow-green: 0 0 20px #00ff8866, 0 0 60px #00ff8822;
     --radius: 20px;
@@ -39,7 +41,7 @@
   a { color: inherit; text-decoration: none; }
   .container { width: min(1180px, 90%); margin: auto; }
 
-  /* ── CURSOR ── */
+  /* CURSOR */
   #cursor {
     position: fixed; width: 12px; height: 12px; border-radius: 50%;
     background: var(--cyan); pointer-events: none; z-index: 9999;
@@ -52,28 +54,32 @@
     transform: translate(-50%,-50%); transition: all .15s ease; opacity: .6;
   }
 
-  /* ── CANVASES ── */
-  #matrix-canvas {
-    position: fixed; inset: 0; z-index: 0; opacity: .04; pointer-events: none;
-  }
-  #particle-canvas {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  }
-  /* ── THREE.JS 3D BACKGROUND ── */
+  /* BACKGROUNDS */
+  #matrix-canvas,
+  #particle-canvas,
   #three-canvas {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    opacity: 1;
   }
+  #matrix-canvas { opacity: .04; }
+  #three-canvas { opacity: 1; }
 
-  /* ── SCANLINE ── */
   body::before {
     content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,245,255,.013) 2px, rgba(0,245,255,.013) 4px);
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,245,255,.013) 2px,
+      rgba(0,245,255,.013) 4px
+    );
     animation: scanlines 8s linear infinite;
   }
-  @keyframes scanlines { from { background-position: 0 0; } to { background-position: 0 100px; } }
+  @keyframes scanlines {
+    from { background-position: 0 0; }
+    to { background-position: 0 100px; }
+  }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     padding: 16px 48px;
@@ -99,11 +105,10 @@
   }
   .nav-links a:hover { color: var(--cyan); text-shadow: var(--glow-cyan); }
 
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section { position: relative; z-index: 2; padding: 110px 0; }
   header { position: relative; z-index: 2; }
 
-  /* ── SECTION HEADER ── */
   .section-header { margin-bottom: 56px; }
   .section-header.center { text-align: center; }
   .section-tag {
@@ -115,22 +120,21 @@
     font-family: 'Orbitron', monospace;
     font-size: clamp(1.7rem, 3.5vw, 2.8rem);
     font-weight: 900; color: #fff; line-height: 1.1;
-    letter-spacing: -1px; max-width: 820px;
+    letter-spacing: -1px; max-width: 860px;
   }
   .section-subtitle {
-    color: var(--dim); max-width: 700px; margin-top: 12px; font-size: .98rem;
+    color: var(--dim); max-width: 760px; margin-top: 12px; font-size: .98rem;
   }
   .section-line {
     width: 55px; height: 2px; margin-top: 20px;
     background: linear-gradient(90deg, var(--cyan), var(--green));
     box-shadow: var(--glow-cyan);
   }
-  .section-header.center .section-line { margin: 20px auto 0; }
 
-  /* ── HERO ── */
+  /* HERO */
   #hero {
     min-height: 100vh; display: grid;
-    grid-template-columns: 1.15fr .85fr;
+    grid-template-columns: 1.08fr .92fr;
     gap: 56px; align-items: center;
     padding: 120px 0 80px;
   }
@@ -150,12 +154,14 @@
     0%,100% { box-shadow: 0 0 0 0 rgba(0,255,136,.4); }
     70% { box-shadow: 0 0 0 8px rgba(0,255,136,0); }
   }
+
   .hero-eyebrow {
     font-family: 'Share Tech Mono', monospace; font-size: .78rem;
     color: var(--green); letter-spacing: 4px; margin-bottom: 20px;
     opacity: 0; animation: fadeUp .8s .3s forwards;
   }
   .hero-eyebrow::before { content: '> '; }
+
   h1 {
     font-family: 'Orbitron', monospace;
     font-size: clamp(2.8rem, 7vw, 6.5rem);
@@ -164,22 +170,26 @@
     margin-bottom: 22px;
     opacity: 0; animation: fadeUp .8s .5s forwards;
   }
+
   .hero-tagline {
     font-family: 'Share Tech Mono', monospace;
-    font-size: clamp(.85rem, 1.8vw, 1.1rem);
-    color: var(--dim); letter-spacing: 4px;
+    font-size: clamp(.8rem, 1.8vw, 1.05rem);
+    color: var(--dim); letter-spacing: 3px;
     opacity: 0; animation: fadeUp .8s .65s forwards;
     margin-bottom: 20px;
   }
+
   .hero-desc {
-    color: #cbd7e4; max-width: 640px; font-size: 1.05rem;
+    color: #cbd7e4; max-width: 670px; font-size: 1.02rem;
     margin-bottom: 32px;
     opacity: 0; animation: fadeUp .8s .8s forwards;
   }
+
   .hero-buttons {
     display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px;
     opacity: 0; animation: fadeUp .8s 1s forwards;
   }
+
   .btn {
     font-family: 'Share Tech Mono', monospace; font-size: .82rem;
     letter-spacing: 2px; padding: 13px 26px;
@@ -198,10 +208,12 @@
   .btn-secondary {
     background: transparent; border: 1px solid var(--dim); color: var(--dim);
   }
-  .btn-secondary:hover { border-color: var(--green); color: var(--green); box-shadow: var(--glow-green); }
+  .btn-secondary:hover {
+    border-color: var(--green); color: var(--green); box-shadow: var(--glow-green);
+  }
 
   .hero-stats {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; max-width: 600px;
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; max-width: 640px;
     opacity: 0; animation: fadeUp .8s 1.1s forwards;
   }
   .hero-stat {
@@ -209,10 +221,10 @@
     background: rgba(10,22,38,.78); border: 1px solid var(--line);
   }
   .hero-stat strong {
-    display: block; color: var(--cyan); font-size: 1.35rem;
+    display: block; color: var(--cyan); font-size: 1.22rem;
     font-family: 'Orbitron', monospace; line-height: 1.1;
   }
-  .hero-stat span { color: var(--dim); font-size: .83rem; }
+  .hero-stat span { color: var(--dim); font-size: .8rem; }
 
   /* GLITCH */
   .glitch { position: relative; display: inline-block; }
@@ -229,29 +241,58 @@
     animation: glitch2 5s infinite; transform: translateX(3px);
   }
   @keyframes glitch1 {
-    0%,88%,100% { opacity:0; } 90%,94% { opacity:1; transform:translateX(-4px) skewX(-2deg); }
+    0%,88%,100% { opacity:0; }
+    90%,94% { opacity:1; transform:translateX(-4px) skewX(-2deg); }
     92% { transform:translateX(4px) skewX(2deg); }
   }
   @keyframes glitch2 {
-    0%,88%,100% { opacity:0; } 89%,95% { opacity:1; transform:translateX(3px) skewX(1deg); }
+    0%,88%,100% { opacity:0; }
+    89%,95% { opacity:1; transform:translateX(3px) skewX(1deg); }
     92% { transform:translateX(-3px) skewX(-1deg); }
   }
 
-  /* PROFILE BOX */
+  /* PROFILE */
   .profile-box {
     border-radius: 28px;
     background: linear-gradient(180deg, rgba(16,29,46,.95), rgba(5,13,24,.95));
     border: 1px solid rgba(0,245,255,.12);
     box-shadow: 0 24px 70px rgba(0,0,0,.4);
-    padding: 26px; position: relative; overflow: hidden;
+    padding: 22px; position: relative; overflow: hidden;
     opacity: 0; animation: fadeUp .9s 1.2s forwards;
   }
-  .profile-box::before {
-    content: ''; position: absolute; width: 220px; height: 220px; border-radius: 50%;
-    background: rgba(0,245,255,.12); top: -80px; right: -80px; filter: blur(12px);
+  .profile-photo {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0,245,255,.16);
+    margin-bottom: 16px;
+    background: #08111d;
   }
+  .profile-photo img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .profile-overlay {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 52px 18px 16px;
+    background: linear-gradient(transparent, rgba(2,8,16,.94));
+  }
+  .profile-overlay strong {
+    display: block; color: #fff;
+    font-family: 'Orbitron', monospace; letter-spacing: 1px;
+  }
+  .profile-overlay span {
+    color: var(--cyan);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .76rem;
+  }
+
   .terminal {
-    background: #030a14; border: 1px solid rgba(0,245,255,.1); border-radius: 18px; overflow: hidden;
+    background: #030a14; border: 1px solid rgba(0,245,255,.1);
+    border-radius: 18px; overflow: hidden;
   }
   .terminal-bar {
     padding: 13px 16px; background: rgba(255,255,255,.04);
@@ -259,31 +300,22 @@
     display: flex; gap: 8px; align-items: center; position: relative;
   }
   .tdot { width: 11px; height: 11px; border-radius: 50%; }
-  .tdot.r { background: #ef476f; } .tdot.y { background: #ffd166; } .tdot.g { background: var(--green); }
+  .tdot.r { background: #ef476f; }
+  .tdot.y { background: #ffd166; }
+  .tdot.g { background: var(--green); }
   .terminal-title-bar {
     position: absolute; left: 50%; transform: translateX(-50%);
     font-family: 'Share Tech Mono', monospace; font-size: .7rem; color: var(--dim);
   }
   .terminal-body {
     padding: 20px; font-family: 'Share Tech Mono', monospace;
-    color: #d7fff8; font-size: .82rem; line-height: 1.9;
+    color: #d7fff8; font-size: .8rem; line-height: 1.9;
   }
   .terminal-body .p { color: var(--green); }
   .terminal-body .v { color: var(--cyan); }
   .terminal-body .c { color: var(--dim); }
-  .cursor-blink {
-    display: inline-block; width: 8px; height: 14px;
-    background: var(--cyan); animation: blink 1s infinite; vertical-align: middle;
-  }
-  @keyframes blink { 0%,50% { opacity:1; } 51%,100% { opacity:0; } }
-  .quick-info {
-    margin-top: 16px; padding: 20px; border: 1px solid var(--line);
-    border-radius: 18px; background: rgba(255,255,255,.03);
-  }
-  .quick-info h3 { color: var(--cyan); font-family: 'Orbitron', monospace; font-size: .8rem; margin-bottom: 12px; letter-spacing: 1px; }
-  .quick-info ul { list-style: none; display: grid; gap: 9px; color: #d9e4ed; font-size: .88rem; }
 
-  /* ── CARDS ── */
+  /* CARDS */
   .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
   .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
 
@@ -313,7 +345,7 @@
   .card h3 { font-size: 1.15rem; margin-bottom: 9px; color: #fff; }
   .card p, .card li { color: var(--dim); font-size: .93rem; }
 
-  /* ── TAGS ── */
+  /* TAGS */
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
   .tag {
     padding: 5px 10px; border-radius: 999px;
@@ -321,25 +353,12 @@
     background: rgba(0,245,255,.07);
     color: var(--cyan); font-size: .75rem; font-weight: 700;
     font-family: 'Share Tech Mono', monospace; letter-spacing: .5px;
-    transition: background .2s, color .2s;
   }
-  .tag:hover { background: rgba(0,245,255,.15); }
 
-  /* ── SKILL BAR ── */
-  .skill-card { display: grid; gap: 10px; }
-  .bar { height: 6px; border-radius: 999px; background: rgba(255,255,255,.07); overflow: hidden; margin-top: 4px; }
-  .bar span {
-    display: block; height: 100%; border-radius: 999px;
-    background: linear-gradient(90deg, var(--cyan), var(--accent2));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 1.2s cubic-bezier(.22,1,.36,1);
-  }
-  .bar.animated span { transform: scaleX(1); }
-
-  /* ── TIMELINE ── */
+  /* TIMELINE */
   .timeline { display: grid; gap: 20px; }
   .timeline-item {
-    display: grid; grid-template-columns: 160px 1fr; gap: 22px;
+    display: grid; grid-template-columns: 170px 1fr; gap: 22px;
     background: var(--card); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 26px;
     transition: border-color .25s, box-shadow .25s;
@@ -348,20 +367,40 @@
     border-color: rgba(0,245,255,.25);
     box-shadow: 0 8px 30px rgba(0,245,255,.06);
   }
-  .tl-date { color: var(--cyan); font-family: 'Share Tech Mono', monospace; font-size: .8rem; letter-spacing: 1px; font-weight: 700; padding-top: 3px; }
+  .tl-date {
+    color: var(--cyan); font-family: 'Share Tech Mono', monospace;
+    font-size: .8rem; letter-spacing: 1px; font-weight: 700; padding-top: 3px;
+  }
   .tl-content h3 { font-size: 1.15rem; margin-bottom: 4px; color: #fff; }
   .tl-content h4 { color: var(--cyan); font-size: .88rem; margin-bottom: 12px; font-weight: 600; }
   .tl-content ul { margin-left: 18px; display: grid; gap: 6px; }
   .tl-content ul li { color: var(--dim); font-size: .9rem; }
   .tl-content p { color: var(--dim); font-size: .9rem; }
 
-  /* ── PROJECTS ── */
+  /* SKILLS */
+  .skill-card { display: grid; gap: 10px; }
+  .bar {
+    height: 6px; border-radius: 999px; background: rgba(255,255,255,.07);
+    overflow: hidden; margin-top: 4px;
+  }
+  .bar span {
+    display: block; height: 100%; border-radius: 999px;
+    background: linear-gradient(90deg, var(--cyan), var(--accent2));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 1.2s cubic-bezier(.22,1,.36,1);
+  }
+  .bar.animated span { transform: scaleX(1); }
+
+  /* PROJECTS */
   .featured-project { grid-column: 1 / -1; }
   .project-header {
     display: flex; flex-wrap: wrap; align-items: flex-start;
     justify-content: space-between; gap: 16px; margin-bottom: 18px;
   }
-  .project-header h3 { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin-bottom: 5px; color: #fff; }
+  .project-header h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    margin-bottom: 5px; color: #fff;
+  }
   .project-subtitle { color: #d4dfeb; font-weight: 600; margin-bottom: 4px; font-size: .93rem; }
   .project-meta-line { color: var(--dim); font-size: .85rem; }
   .project-status {
@@ -375,30 +414,66 @@
     padding: 18px 22px; border-radius: 16px; margin: 18px 0;
     border: 1px solid rgba(0,245,255,.18); background: rgba(0,245,255,.05);
   }
-  .outcome-box strong { color: var(--cyan); display: block; margin-bottom: 6px; font-size: .85rem; letter-spacing: 1px; text-transform: uppercase; }
+  .outcome-box strong {
+    color: var(--cyan); display: block; margin-bottom: 6px;
+    font-size: .85rem; letter-spacing: 1px; text-transform: uppercase;
+  }
   .outcome-box p { color: #d4dfeb; font-size: .9rem; }
-  .project-meta-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 16px 0; }
-  .meta-item { padding: 14px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
-  .meta-item strong { display: block; color: var(--cyan); font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  .project-meta-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 12px; margin: 16px 0;
+  }
+  .meta-item {
+    padding: 14px; border-radius: 14px;
+    background: rgba(255,255,255,.03); border: 1px solid var(--line);
+  }
+  .meta-item strong {
+    display: block; color: var(--cyan); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;
+  }
   .meta-item span { color: #d9e4ed; font-size: .88rem; }
+
   .findings-label {
     color: var(--green); text-transform: uppercase; letter-spacing: 2px;
     font-size: .72rem; font-weight: 900; font-family: 'Share Tech Mono', monospace;
     margin-bottom: 10px;
   }
   .findings-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
-  .finding { padding: 18px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
-  .finding-num { color: var(--accent2); font-weight: 900; font-size: .85rem; margin-bottom: 7px; font-family: 'Share Tech Mono', monospace; }
+  .finding {
+    padding: 18px; border-radius: 14px;
+    background: rgba(255,255,255,.03); border: 1px solid var(--line);
+  }
+  .finding-num {
+    color: var(--accent2); font-weight: 900; font-size: .85rem;
+    margin-bottom: 7px; font-family: 'Share Tech Mono', monospace;
+  }
   .finding h4 { margin-bottom: 6px; font-size: .98rem; color: #fff; }
   .finding p { color: var(--dim); font-size: .88rem; }
-  .ctf-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 16px 0; }
-  .ctf-stat { padding: 14px; border-radius: 14px; text-align: center; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
-  .ctf-stat strong { display: block; color: var(--cyan); font-size: 1.5rem; font-family: 'Orbitron', monospace; line-height: 1.1; }
-  .ctf-stat span { color: var(--dim); font-size: .82rem; }
-  .project-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; }
 
-  /* ── CONTACT ── */
-  .contact-wrapper { display: grid; grid-template-columns: .9fr 1.1fr; gap: 20px; align-items: stretch; }
+  .ctf-stats {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 10px; margin: 16px 0;
+  }
+  .ctf-stat {
+    padding: 14px; border-radius: 14px; text-align: center;
+    background: rgba(255,255,255,.03); border: 1px solid var(--line);
+  }
+  .ctf-stat strong {
+    display: block; color: var(--cyan); font-size: 1.5rem;
+    font-family: 'Orbitron', monospace; line-height: 1.1;
+  }
+  .ctf-stat span { color: var(--dim); font-size: .82rem; }
+
+  .project-card {
+    display: flex; flex-direction: column; justify-content: space-between; min-height: 240px;
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    display: grid; grid-template-columns: .9fr 1.1fr;
+    gap: 20px; align-items: stretch;
+  }
   .contact-card {
     background: linear-gradient(135deg, rgba(0,245,255,.1), rgba(124,92,255,.1));
     border-color: rgba(0,245,255,.2);
@@ -407,16 +482,15 @@
   .contact-list li { color: #d9e4ed; font-size: .92rem; }
   .contact-list a { color: var(--cyan); transition: text-shadow .2s; }
   .contact-list a:hover { text-shadow: var(--glow-cyan); }
+
   input, textarea {
     width: 100%; padding: 13px 14px; border-radius: 12px;
     border: 1px solid var(--line); background: rgba(255,255,255,.04);
     color: var(--text); outline: none; font: inherit; margin-bottom: 10px; font-size: .92rem;
   }
   input:focus, textarea:focus { border-color: rgba(0,245,255,.4); }
-  .note { color: var(--dim); font-size: .82rem; margin-top: 10px; }
   button { border: none; cursor: none; font: inherit; }
 
-  /* ── FOOTER ── */
   footer {
     border-top: 1px solid rgba(0,245,255,.07); padding: 28px; text-align: center;
     position: relative; z-index: 2;
@@ -424,20 +498,26 @@
   }
   footer span { color: var(--cyan); }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-  @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(28px); }
+    to { opacity:1; transform:translateY(0); }
+  }
 
-  .reveal { opacity:0; transform:translateY(36px); transition: opacity .65s, transform .65s; }
+  .reveal {
+    opacity:0; transform:translateY(36px);
+    transition: opacity .65s, transform .65s;
+  }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
-  /* Scroll indicator */
   .scroll-indicator {
     position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 7px;
     opacity: 0; animation: fadeUp 1s 2s forwards;
   }
-  .scroll-text { font-family: 'Share Tech Mono', monospace; font-size: .62rem; color: var(--dim); letter-spacing: 3px; }
+  .scroll-text {
+    font-family: 'Share Tech Mono', monospace; font-size: .62rem;
+    color: var(--dim); letter-spacing: 3px;
+  }
   .scroll-line {
     width: 1px; height: 48px;
     background: linear-gradient(180deg, var(--cyan), transparent);
@@ -450,7 +530,6 @@
     100% { transform:scaleY(0); transform-origin:bottom; }
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
     #hero { grid-template-columns: 1fr; padding-top: 100px; }
     .grid-3, .grid-2 { grid-template-columns: 1fr; }
@@ -460,12 +539,16 @@
     nav { padding: 14px 22px; }
     .nav-links { display: none; }
     section { padding: 80px 0; }
+    body { cursor: auto; }
+    #cursor, #cursor-ring { display: none; }
   }
+
   @media (max-width: 520px) {
     .hero-stats { grid-template-columns: 1fr; }
   }
 </style>
 </head>
+
 <body>
 
 <div id="cursor"></div>
@@ -480,6 +563,7 @@
     <span class="nav-logo-badge">RS</span>
     RUJOHN SHAKYA
   </a>
+
   <ul class="nav-links">
     <li><a href="#about">ABOUT</a></li>
     <li><a href="#education">EDUCATION</a></li>
@@ -494,55 +578,85 @@
 <header id="home">
   <div class="container">
     <div id="hero">
+
       <div>
-        <div class="status-badge"><span class="status-dot"></span>AVAILABLE FOR OPPORTUNITIES</div>
-        <div class="hero-eyebrow">CYBERSECURITY SPECIALIST</div>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          OPEN TO IT & CYBERSECURITY OPPORTUNITIES
+        </div>
+
+        <div class="hero-eyebrow">IT SUPPORT & CYBERSECURITY</div>
+
         <h1>
           <div>RUJOHN</div>
           <div><span class="glitch" data-text="SHAKYA">SHAKYA</span></div>
         </h1>
-        <p class="hero-tagline">PENTEST // SOC // FORENSICS // CLOUD SEC</p>
-        <p class="hero-desc">
-          Experienced in computing, with knowledge of incident response, penetration testing, Security Operations Centre (SOC) operations, and digital forensics. Passionate about cybersecurity and committed to applying technical skills while continuously expanding professional knowledge. Demonstrates strong analytical and problem-solving abilities, a collaborative approach to teamwork, and a dedication to protecting organisational systems and data. Eager to contribute to an organisation by supporting cybersecurity initiatives while developing into a skilled and trusted cybersecurity professional.
+
+        <p class="hero-tagline">
+          IT SUPPORT // M365 // ACTIVE DIRECTORY // WINDOWS SERVER // SOC
         </p>
+
+        <p class="hero-desc">
+          Experienced in IT Support with hands-on exposure to Microsoft 365, Active Directory,
+          Microsoft Entra ID, Intune, Windows Server, networking, ticketing systems, and end-user support.
+          I enjoy troubleshooting technical issues, supporting users, and finding practical solutions across
+          hardware, software, network, system, and security environments. I also bring practical cybersecurity
+          experience across SOC operations, incident response, vulnerability assessment, penetration testing,
+          and digital forensics.
+        </p>
+
         <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">VIEW MY WORK</a>
+          <a href="#experience" class="btn btn-primary">VIEW EXPERIENCE</a>
           <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
         </div>
+
         <div class="hero-stats">
-          <div class="hero-stat"><strong>2026</strong><span>Bachelor of Cyber Security & Behaviour</span></div>
-          <div class="hero-stat"><strong>CCNA</strong><span>Introduction to Networking</span></div>
-          <div class="hero-stat"><strong>SOC</strong><span>Monitoring, triage & response</span></div>
+          <div class="hero-stat">
+            <strong>IT SUPPORT</strong>
+            <span>Service Desk · M365 · AD · Windows Server</span>
+          </div>
+          <div class="hero-stat">
+            <strong>2026</strong>
+            <span>Bachelor of Cyber Security completed</span>
+          </div>
+          <div class="hero-stat">
+            <strong>50+</strong>
+            <span>picoCTF challenges completed</span>
+          </div>
         </div>
       </div>
 
       <aside class="profile-box">
-        <div class="terminal">
-          <div class="terminal-bar">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="terminal-title-bar">whoami.sh</span>
-          </div>
-          <div class="terminal-body">
-            <div><span class="p">rujohn@sec</span><span class="c">:~$</span> <span class="v">whoami</span></div>
-            <div>Rujohn Shakya</div>
-            <div><span class="p">rujohn@sec</span><span class="c">:~$</span> <span class="v">focus</span></div>
-            <div>SOC · Incident Response · Pen Testing · Forensics</div>
-            <div><span class="p">rujohn@sec</span><span class="c">:~$</span> <span class="v">tools</span></div>
-            <div>Splunk · Sentinel · Burp Suite · Metasploit</div>
-            <div><span class="p">rujohn@sec</span><span class="c">:~$</span> <span class="cursor-blink"></span></div>
+        <div class="profile-photo">
+          <img src="polished_corporate_office_portrait.png" alt="Professional portrait of Rujohn Shakya">
+          <div class="profile-overlay">
+            <strong>Rujohn Shakya</strong>
+            <span>Sydney, NSW · IT Support & Cybersecurity</span>
           </div>
         </div>
-        <div class="quick-info">
-          <h3>// QUICK INFO</h3>
-          <ul>
-            <li><strong>Email:</strong> rujohn.shakya123@gmail.com</li>
-            <li><strong>Phone:</strong> 0416 637 663</li>
-            <li><strong>LinkedIn:</strong> linkedin.com/in/rujohn-shakya</li>
-            <li><strong>Location:</strong> Sydney, NSW</li>
-          </ul>
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="tdot r"></span>
+            <span class="tdot y"></span>
+            <span class="tdot g"></span>
+            <span class="terminal-title-bar">whoami.sh</span>
+          </div>
+
+          <div class="terminal-body">
+            <div><span class="p">rujohn@it-sec</span><span class="c">:~$</span> <span class="v">whoami</span></div>
+            <div>Rujohn Shakya</div>
+
+            <div><span class="p">rujohn@it-sec</span><span class="c">:~$</span> <span class="v">focus</span></div>
+            <div>IT Support · Systems · Networking · Cybersecurity</div>
+
+            <div><span class="p">rujohn@it-sec</span><span class="c">:~$</span> <span class="v">stack</span></div>
+            <div>M365 · AD · Entra · Intune · Windows Server · Splunk</div>
+          </div>
         </div>
       </aside>
     </div>
+
     <div class="scroll-indicator">
       <span class="scroll-text">SCROLL</span>
       <div class="scroll-line"></div>
@@ -553,75 +667,115 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
+
     <div class="section-header reveal">
       <p class="section-tag">// ABOUT ME</p>
-      <h2 class="section-title">A practical cyber learner with a computing background.</h2>
-      <p class="section-subtitle">I bridge theory and real-world threat environments — from SIEM dashboards to web app exploit chains.</p>
+      <h2 class="section-title">Practical IT support backed by hands-on cybersecurity experience.</h2>
+      <p class="section-subtitle">
+        My background combines user support, Microsoft administration, Windows Server, networking,
+        and service desk operations with practical security testing and SOC experience.
+      </p>
       <div class="section-line"></div>
     </div>
+
     <div class="grid-3">
       <article class="card reveal">
+        <div class="card-icon">🖥️</div>
+        <h3>IT Support</h3>
+        <p>
+          End-user support, technical troubleshooting, account administration, ticket handling,
+          remote support, documentation, system maintenance, and reliable issue resolution.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">🧩</div>
+        <h3>Systems & Microsoft 365</h3>
+        <p>
+          Hands-on experience with Active Directory, Microsoft Entra ID, Intune, Windows Server,
+          Group Policy, file server permissions, shared drives, Microsoft 365, and compliance controls.
+        </p>
+      </article>
+
+      <article class="card reveal">
         <div class="card-icon">🛡️</div>
-        <h3>Cyber Defence</h3>
-        <p>Threat detection, alert triage, SOC monitoring, and incident response processes that help organisations respond to cyber incidents safely and effectively.</p>
-      </article>
-      <article class="card reveal">
-        <div class="card-icon">⚔️</div>
-        <h3>Security Testing</h3>
-        <p>Hands-on penetration testing and vulnerability assessment using Kali Linux, Burp Suite, Metasploit, Nmap, SQLMap, Hydra, and Wireshark.</p>
-      </article>
-      <article class="card reveal">
-        <div class="card-icon">🤝</div>
-        <h3>Professional Strengths</h3>
-        <p>Strong communication, effective time management, logical problem-solving, calm under pressure, accurate multitasking, and collaborative teamwork.</p>
+        <h3>Cybersecurity</h3>
+        <p>
+          Practical exposure to SOC monitoring, incident response, vulnerability assessment,
+          penetration testing, digital forensics, and security tools including Splunk and Microsoft Sentinel.
+        </p>
       </article>
     </div>
+
   </div>
 </section>
 
 <!-- EDUCATION -->
 <section id="education">
   <div class="container">
+
     <div class="section-header reveal">
-      <p class="section-tag">// TRAINING</p>
-      <h2 class="section-title">Academic path & learning foundation.</h2>
+      <p class="section-tag">// EDUCATION & CERTIFICATION</p>
+      <h2 class="section-title">Academic foundation and industry learning.</h2>
       <div class="section-line"></div>
     </div>
+
     <div class="timeline">
+
       <article class="timeline-item reveal">
-        <div class="tl-date">2026<br><span style="color:var(--dim);font-size:.75rem">(IN PROGRESS)</span></div>
+        <div class="tl-date">COMPLETED<br>2026</div>
         <div class="tl-content">
-          <h3>Bachelor of Cyber Security and Behaviour</h3>
+          <h3>Bachelor of Cyber Security</h3>
           <h4>Western Sydney University</h4>
-          <p>Studying cybersecurity concepts, cyber behaviour, incident response, digital forensics, networking, system security, and risk management.</p>
+          <p>
+            Built a strong foundation in network security, digital forensics, incident response,
+            penetration testing, and security operations. Developed practical skills through labs,
+            CTF challenges, and hands-on use of industry-standard cybersecurity tools.
+          </p>
           <div class="tags">
-            <span class="tag">Cyber Security</span><span class="tag">Behaviour</span>
-            <span class="tag">Incident Response</span><span class="tag">Digital Forensics</span>
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Incident Response</span>
+            <span class="tag">Digital Forensics</span>
+            <span class="tag">Network Security</span>
           </div>
         </div>
       </article>
+
+      <article class="timeline-item reveal">
+        <div class="tl-date">CERTIFICATION</div>
+        <div class="tl-content">
+          <h3>CCNA: Introduction to Networks</h3>
+          <h4>Cisco Networking Academy</h4>
+          <p>
+            Covered networking fundamentals, TCP/IP, IPv4/IPv6, Ethernet, switching,
+            Cisco IOS, IP addressing, and basic network troubleshooting and security concepts.
+          </p>
+          <div class="tags">
+            <span class="tag">Cisco</span>
+            <span class="tag">Networking</span>
+            <span class="tag">TCP/IP</span>
+            <span class="tag">IPv4 / IPv6</span>
+          </div>
+        </div>
+      </article>
+
       <article class="timeline-item reveal">
         <div class="tl-date">2022</div>
         <div class="tl-content">
           <h3>Bachelor of Computer Science</h3>
           <h4>Islington College, Nepal</h4>
-          <p>Strong foundation in computing, programming, technical problem-solving, and system concepts.</p>
+          <p>
+            Developed a foundation in computing, programming, technical problem-solving,
+            and core system concepts.
+          </p>
           <div class="tags">
-            <span class="tag">Computer Science</span><span class="tag">Programming</span><span class="tag">Computing</span>
+            <span class="tag">Computer Science</span>
+            <span class="tag">Programming</span>
+            <span class="tag">Computing</span>
           </div>
         </div>
       </article>
-      <article class="timeline-item reveal">
-        <div class="tl-date">CERT</div>
-        <div class="tl-content">
-          <h3>Cisco CCNAv7: Introduction to Networking</h3>
-          <h4>Cisco Networking Academy</h4>
-          <p>Network fundamentals, IP addressing, routing, switching, and basic network security concepts.</p>
-          <div class="tags">
-            <span class="tag">Cisco</span><span class="tag">Networking</span><span class="tag">Network Security</span>
-          </div>
-        </div>
-      </article>
+
     </div>
   </div>
 </section>
@@ -629,67 +783,114 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
+
     <div class="section-header reveal">
-      <p class="section-tag">// OPERATIONS LOG</p>
-      <h2 class="section-title">Experience across cybersecurity & customer service.</h2>
+      <p class="section-tag">// EXPERIENCE</p>
+      <h2 class="section-title">Hands-on experience across IT support, systems, and cybersecurity.</h2>
       <div class="section-line"></div>
     </div>
+
     <div class="timeline">
+
+      <article class="timeline-item reveal">
+        <div class="tl-date">MAY 2026<br>PRESENT</div>
+        <div class="tl-content">
+          <h3>Information Technology Service Desk</h3>
+          <h4>AA Network Technologies · Full-time · Sydney, NSW · On-site</h4>
+          <ul>
+            <li>Manage Microsoft 365, Active Directory, and Microsoft Entra ID user accounts, access, and security groups.</li>
+            <li>Create and manage OUs, Sub-OUs, users, group memberships, and Group Policy Objects (GPOs) within Active Directory.</li>
+            <li>Configure and apply Group Policies, access controls, and security settings across Windows Server and domain environments.</li>
+            <li>Apply Microsoft 365 security and compliance policies, including user access, device compliance, and policy-based controls through Microsoft Entra ID and Intune.</li>
+            <li>Install and configure Windows Server File Server roles, shared drives, and user/group permissions.</li>
+            <li>Troubleshoot hardware, software, VPN, DNS, DHCP, and network connectivity issues across Windows environments.</li>
+            <li>Install and configure CCTV systems while providing ongoing technical and end-user support.</li>
+            <li>Manage IT service tickets, technical documentation, and remote support using Atera, ServiceNow, and KaseyaOne.</li>
+          </ul>
+
+          <div class="tags">
+            <span class="tag">Microsoft 365</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">Entra ID</span>
+            <span class="tag">Intune</span>
+            <span class="tag">Windows Server</span>
+            <span class="tag">Group Policy</span>
+            <span class="tag">ServiceNow</span>
+            <span class="tag">Atera</span>
+            <span class="tag">KaseyaOne</span>
+          </div>
+        </div>
+      </article>
+
       <article class="timeline-item reveal">
         <div class="tl-date">MAR 2026<br>PRESENT</div>
         <div class="tl-content">
-          <h3>Penetration Testing Intern</h3>
-          <h4>WA Cyber Security Centre · Community Engagement</h4>
+          <h3>Penetration Tester Intern</h3>
+          <h4>Western Sydney University · Internship · Sydney, NSW · On-site</h4>
           <ul>
-            <li>Conducted penetration testing and vulnerability assessments on web applications in a controlled lab environment.</li>
-            <li>Performed network scanning and enumeration using Nmap and Kali Linux to identify security weaknesses.</li>
-            <li>Used Burp Suite and Metasploit to test and analyse common web application vulnerabilities including SQLi and XSS.</li>
-            <li>Documented findings and prepared penetration testing reports with remediation recommendations.</li>
-            <li>Applied OWASP Top 10 and ethical hacking principles throughout all security testing tasks.</li>
-            <li>Collaborated with team members to improve problem-solving, analytical thinking, and communication skills.</li>
+            <li>Conduct penetration testing and vulnerability assessments on web applications, systems, and network environments in controlled lab settings.</li>
+            <li>Perform network scanning, enumeration, and reconnaissance using Nmap and Kali Linux to identify potential security weaknesses.</li>
+            <li>Use Burp Suite and Metasploit to test common vulnerabilities, including SQL Injection and Cross-Site Scripting.</li>
+            <li>Document vulnerabilities, assess findings, and prepare penetration testing reports with remediation recommendations.</li>
+            <li>Support incident response, threat analysis, and security testing activities while applying ethical hacking and cybersecurity best practices.</li>
           </ul>
+
           <div class="tags">
-            <span class="tag">Pen Testing</span><span class="tag">Kali Linux</span>
-            <span class="tag">Burp Suite</span><span class="tag">Metasploit</span><span class="tag">OWASP Top 10</span>
+            <span class="tag">Penetration Testing</span>
+            <span class="tag">Nmap</span>
+            <span class="tag">Kali Linux</span>
+            <span class="tag">Burp Suite</span>
+            <span class="tag">Metasploit</span>
+            <span class="tag">OWASP Top 10</span>
           </div>
         </div>
       </article>
+
       <article class="timeline-item reveal">
         <div class="tl-date">JUL 2025<br>NOV 2025</div>
         <div class="tl-content">
-          <h3>SOC Analyst</h3>
-          <h4>WA Cyber Security Centre · Western Sydney University</h4>
+          <h3>Security Operations Center Analyst Intern</h3>
+          <h4>Western Sydney University · Internship · Parramatta, NSW · On-site</h4>
           <ul>
-            <li>Supported SMEs with incident response — triage, containment, and remediation of ransomware, phishing, and data breach incidents.</li>
-            <li>Applied GRC standards (ISO 27001, SOC 2, Essential 8) through policy drafting and audit planning.</li>
-            <li>Performed penetration testing and ransomware readiness assessments, <strong style="color:var(--cyan)">reducing attack exposure by 25%</strong>.</li>
-            <li>Conducted continuous SOC monitoring via Splunk, achieving <strong style="color:var(--cyan)">95% accuracy</strong> in threat identification and escalation.</li>
-            <li>Leveraged Microsoft Sentinel, Defender, Azure AD, and CrowdStrike Falcon for threat hunting and incident remediation.</li>
-            <li>Presented a capstone security project to an industry review panel — recognised for technical depth and real-world impact.</li>
+            <li>Conducted threat and vulnerability analysis across simulated environments to identify security risks and strengthen system security.</li>
+            <li>Investigated security incidents and suspicious activity using Splunk to support incident detection, analysis, and response.</li>
+            <li>Analysed simulated cyber threats in blue-team exercises and developed detection strategies for different attack techniques.</li>
+            <li>Contributed to security architecture and requirements workshops, aligning technical security solutions with business needs.</li>
+            <li>Collaborated with team members during complex security scenarios, strengthening incident response, problem-solving, and communication skills.</li>
           </ul>
+
           <div class="tags">
-            <span class="tag">Incident Response</span><span class="tag">Splunk</span>
-            <span class="tag">Sentinel</span><span class="tag">CrowdStrike</span><span class="tag">Risk & Compliance</span>
+            <span class="tag">SOC</span>
+            <span class="tag">Splunk</span>
+            <span class="tag">Incident Response</span>
+            <span class="tag">Threat Analysis</span>
+            <span class="tag">Blue Team</span>
           </div>
         </div>
       </article>
+
       <article class="timeline-item reveal">
         <div class="tl-date">NOV 2023<br>JAN 2024</div>
         <div class="tl-content">
           <h3>Customer Service Officer</h3>
-          <h4>Emerico Clothing, Wollongong</h4>
+          <h4>Emerico Clothing · Part-time · Wollongong, NSW</h4>
           <ul>
-            <li>Served customers professionally and assisted in product location, quality, and pricing queries.</li>
-            <li>Operated POS systems for transactions, refunds, and inventory checks.</li>
-            <li>Used Microsoft Office suite (Word, Excel, Outlook) for scheduling and communication.</li>
-            <li>Conducted outbound customer engagement via phone and email.</li>
+            <li>Delivered professional customer service in a fast-paced retail environment, assisting customers with enquiries, product information, and issue resolution.</li>
+            <li>Operated Point of Sale (POS) systems for transactions, refunds, and inventory checks with accuracy and efficiency.</li>
+            <li>Used Microsoft Word, Excel, and Outlook for administrative tasks, scheduling, and customer communication.</li>
+            <li>Handled customer enquiries through phone and email while maintaining clear and professional communication.</li>
+            <li>Developed strong problem-solving, communication, teamwork, and customer support skills while managing multiple priorities.</li>
           </ul>
+
           <div class="tags">
-            <span class="tag">Customer Service</span><span class="tag">Communication</span>
-            <span class="tag">POS</span><span class="tag">Microsoft Office</span>
+            <span class="tag">Customer Service</span>
+            <span class="tag">Communication</span>
+            <span class="tag">POS</span>
+            <span class="tag">Microsoft Office</span>
           </div>
         </div>
       </article>
+
     </div>
   </div>
 </section>
@@ -697,48 +898,110 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
+
     <div class="section-header reveal">
-      <p class="section-tag">// ARSENAL</p>
-      <h2 class="section-title">Technical skills across defence, testing, forensics & infrastructure.</h2>
+      <p class="section-tag">// TECHNICAL SKILLS</p>
+      <h2 class="section-title">IT support, Microsoft administration, networking, and security tooling.</h2>
       <div class="section-line"></div>
     </div>
+
     <div class="grid-3">
+
       <article class="card skill-card reveal">
-        <div class="card-icon">🛡️</div>
-        <h3>Cyber Security & SOC</h3>
-        <p>Splunk Enterprise, Elastic Stack, Wazuh, SIEM monitoring, threat detection, alert triage, incident response.</p>
-        <div class="bar"><span style="--w:88%"></span></div>
+        <div class="card-icon">🖥️</div>
+        <h3>IT Support & Service Desk</h3>
+        <p>
+          Technical troubleshooting, end-user support, ticket management, remote support,
+          documentation, hardware/software support, and incident handling.
+        </p>
+        <div class="tags">
+          <span class="tag">ServiceNow</span>
+          <span class="tag">Atera</span>
+          <span class="tag">KaseyaOne</span>
+        </div>
+        <div class="bar"><span style="--w:92%"></span></div>
       </article>
+
       <article class="card skill-card reveal">
-        <div class="card-icon">⚔️</div>
-        <h3>Penetration Testing</h3>
-        <p>Kali Linux, Burp Suite, Metasploit, Nmap, Hydra, SQLMap, Wireshark, OWASP Top 10 testing.</p>
+        <div class="card-icon">🧑‍💻</div>
+        <h3>Microsoft Administration</h3>
+        <p>
+          Microsoft 365, Active Directory, Microsoft Entra ID, Intune, user and group management,
+          OUs, GPOs, access controls, and compliance policies.
+        </p>
+        <div class="bar"><span style="--w:90%"></span></div>
+      </article>
+
+      <article class="card skill-card reveal">
+        <div class="card-icon">🗄️</div>
+        <h3>Windows Server</h3>
+        <p>
+          Windows Server 2022, File Server role, shared drives, NTFS/share permissions,
+          Group Policy, DNS, DHCP, and domain administration.
+        </p>
+        <div class="bar"><span style="--w:86%"></span></div>
+      </article>
+
+      <article class="card skill-card reveal">
+        <div class="card-icon">🌐</div>
+        <h3>Networking</h3>
+        <p>
+          TCP/IP, IPv4/IPv6, DNS, DHCP, VPN connectivity, network troubleshooting,
+          Cisco networking fundamentals, and CCTV network configuration.
+        </p>
         <div class="bar"><span style="--w:84%"></span></div>
       </article>
+
+      <article class="card skill-card reveal">
+        <div class="card-icon">🛡️</div>
+        <h3>Cybersecurity & SOC</h3>
+        <p>
+          Splunk, Microsoft Sentinel, security monitoring, threat analysis,
+          alert triage, incident response, and vulnerability assessment.
+        </p>
+        <div class="bar"><span style="--w:82%"></span></div>
+      </article>
+
+      <article class="card skill-card reveal">
+        <div class="card-icon">⚔️</div>
+        <h3>Security Testing</h3>
+        <p>
+          Kali Linux, Burp Suite, Metasploit, Nmap, OWASP Top 10,
+          reconnaissance, enumeration, and penetration testing fundamentals.
+        </p>
+        <div class="bar"><span style="--w:80%"></span></div>
+      </article>
+
       <article class="card skill-card reveal">
         <div class="card-icon">🔍</div>
         <h3>Digital Forensics</h3>
-        <p>FTK Imager, Autopsy, Process Explorer, Chainsaw, IOC detection, evidence acquisition and analysis.</p>
-        <div class="bar"><span style="--w:78%"></span></div>
-      </article>
-      <article class="card skill-card reveal">
-        <div class="card-icon">☁️</div>
-        <h3>Cloud & Infrastructure</h3>
-        <p>Microsoft Azure, Azure AD, RBAC, identity & access control, Windows Server, DNS, DHCP, VPN.</p>
+        <p>
+          FTK Imager, Autopsy, Process Explorer, IOC analysis,
+          evidence acquisition, and practical forensic investigation.
+        </p>
         <div class="bar"><span style="--w:76%"></span></div>
       </article>
+
       <article class="card skill-card reveal">
-        <div class="card-icon">🌐</div>
-        <h3>Systems & Networking</h3>
-        <p>Linux (Kali), Windows Server/Client, TCP/IP, firewall rules, endpoint security, Cisco CCNA.</p>
-        <div class="bar"><span style="--w:82%"></span></div>
+        <div class="card-icon">☁️</div>
+        <h3>Cloud & Identity</h3>
+        <p>
+          Microsoft Azure, Microsoft Entra ID, identity and access management,
+          device compliance, and cloud-based administration concepts.
+        </p>
+        <div class="bar"><span style="--w:78%"></span></div>
       </article>
+
       <article class="card skill-card reveal">
         <div class="card-icon">💻</div>
-        <h3>Programming</h3>
-        <p>Python, Java, R programming, PowerShell scripting, Bash scripting.</p>
-        <div class="bar"><span style="--w:74%"></span></div>
+        <h3>Scripting & Programming</h3>
+        <p>
+          PowerShell, Bash, Python, Java, and R programming for automation,
+          administration, and technical problem-solving.
+        </p>
+        <div class="bar"><span style="--w:72%"></span></div>
       </article>
+
     </div>
   </div>
 </section>
@@ -746,109 +1009,132 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
+
     <div class="section-header reveal">
-      <p class="section-tag">// PROJECTS & RESEARCH</p>
-      <h2 class="section-title">Hands-on cybersecurity research, labs & practical learning.</h2>
+      <p class="section-tag">// PROJECTS & PRACTICAL LEARNING</p>
+      <h2 class="section-title">Security research, CTF practice, and incident-response learning.</h2>
       <div class="section-line"></div>
     </div>
+
     <div class="grid-3">
 
-      <!-- Featured -->
       <article class="card featured-project reveal">
         <div class="project-header">
           <div>
             <div class="card-icon">🔬</div>
             <h3>GorkhaSEC Research</h3>
             <p class="project-subtitle">Simulated Stress Analysis in Incident Response</p>
-            <p class="project-meta-line">Published · October 2025 · Western Sydney University</p>
+            <p class="project-meta-line">October 2025 · Western Sydney University</p>
           </div>
           <span class="project-status">CAPSTONE RESEARCH</span>
         </div>
 
         <p style="color:var(--dim);font-size:.92rem;margin-bottom:14px">
           A research-driven capstone investigating how Security Operations Center automated pipelines perform under
-          simultaneous, high-volume cyberattacks. Built a full virtual SOC environment and stress-tested incident
-          response systems under realistic attack conditions.
+          simultaneous, high-volume cyberattacks. Built a virtual SOC environment and stress-tested incident-response
+          systems under realistic attack conditions.
         </p>
 
         <div class="outcome-box">
-          <strong>Key Outcome</strong>
-          <p>Concurrent attack campaigns measurably degraded automation. Triage latency increased by 40%, CPU utilisation peaked at 78%, and false positives nearly doubled. The team proposed the Stress-Resilient Incident Response (SRIR) framework.</p>
+          <strong>Research Focus</strong>
+          <p>
+            Examined triage latency, system load, false positives, automation resilience,
+            and the challenges of correlating telemetry during concurrent attack activity.
+          </p>
         </div>
 
         <div class="project-meta-grid">
-          <div class="meta-item"><strong>Company</strong><span>GorkhaSEC</span></div>
-          <div class="meta-item"><strong>Supervisor</strong><span>Robert Beutel</span></div>
+          <div class="meta-item"><strong>Project</strong><span>GorkhaSEC</span></div>
           <div class="meta-item"><strong>Institution</strong><span>Western Sydney University</span></div>
-          <div class="meta-item"><strong>Team</strong><span>4 Researchers</span></div>
+          <div class="meta-item"><strong>Environment</strong><span>Virtual SOC Lab</span></div>
+          <div class="meta-item"><strong>Focus</strong><span>Incident Response</span></div>
         </div>
 
-        <p class="findings-label">KEY RESEARCH FINDINGS</p>
+        <p class="findings-label">KEY AREAS</p>
+
         <div class="findings-grid">
           <div class="finding">
             <div class="finding-num">01</div>
-            <h4>Automation Fragility Under Stress</h4>
-            <p>40% increase in triage latency and near-double false positives during concurrent multi-vector attacks.</p>
+            <h4>Automation Under Load</h4>
+            <p>Explored how high-volume alerts affect automated triage and response workflows.</p>
           </div>
+
           <div class="finding">
             <div class="finding-num">02</div>
-            <h4>Hybrid Telemetry Scalability Limits</h4>
-            <p>Process Explorer and PCAP produced high-fidelity forensic data but required manual correlation at scale.</p>
+            <h4>Telemetry Correlation</h4>
+            <p>Worked with multiple data sources and reviewed the effort required to correlate evidence at scale.</p>
           </div>
+
           <div class="finding">
             <div class="finding-num">03</div>
-            <h4>Stealth Attack Detection Gaps</h4>
-            <p>In-memory and non-persistent attacks evaded detection, showing the need for broader SOC telemetry.</p>
+            <h4>Detection Gaps</h4>
+            <p>Reviewed limitations in detecting stealthy and non-persistent attack activity.</p>
           </div>
+
           <div class="finding">
             <div class="finding-num">04</div>
-            <h4>SRIR Framework Proposed</h4>
-            <p>Alert deduplication, adaptive correlation thresholds, load-aware automation tiers, and digital-twin rehearsal.</p>
+            <h4>Resilient Response</h4>
+            <p>Considered alert deduplication, adaptive thresholds, and load-aware automation approaches.</p>
           </div>
         </div>
 
         <div class="tags">
-          <span class="tag">VirtualBox</span><span class="tag">Kali Linux</span><span class="tag">Metasploit</span>
-          <span class="tag">Splunk</span><span class="tag">Wireshark</span><span class="tag">Security Onion</span>
-          <span class="tag">Process Explorer</span><span class="tag">tcpdump</span>
+          <span class="tag">VirtualBox</span>
+          <span class="tag">Kali Linux</span>
+          <span class="tag">Metasploit</span>
+          <span class="tag">Splunk</span>
+          <span class="tag">Wireshark</span>
+          <span class="tag">Security Onion</span>
+          <span class="tag">Process Explorer</span>
+          <span class="tag">tcpdump</span>
         </div>
       </article>
 
-      <!-- CTF -->
       <article class="card project-card reveal">
         <div>
           <div class="card-icon">🏴</div>
-          <h3>50+ CTF Challenges Completed</h3>
+          <h3>50+ picoCTF Challenges</h3>
           <p style="color:var(--dim);font-size:.9rem;margin-bottom:14px">
-            Active on CyLab Academy, solving challenges across web exploitation, cryptography, digital forensics,
-            reverse engineering, and OSINT.
+            Completed more than 50 picoCTF challenges across web exploitation,
+            cryptography, digital forensics, reverse engineering, and OSINT.
           </p>
+
           <div class="ctf-stats">
             <div class="ctf-stat"><strong>50+</strong><span>Challenges</span></div>
             <div class="ctf-stat"><strong>5</strong><span>Categories</span></div>
-            <div class="ctf-stat"><strong>CyLab</strong><span>Platform</span></div>
+            <div class="ctf-stat"><strong>picoCTF</strong><span>Platform</span></div>
           </div>
-          <p style="color:var(--dim);font-size:.88rem">Each challenge sharpens real-world offensive and defensive skills beyond the classroom.</p>
+
+          <p style="color:var(--dim);font-size:.88rem">
+            Practical challenge-based learning used to strengthen offensive and defensive cybersecurity skills.
+          </p>
         </div>
+
         <div class="tags">
-          <span class="tag">Web Exploitation</span><span class="tag">Cryptography</span>
-          <span class="tag">Digital Forensics</span><span class="tag">Rev Engineering</span><span class="tag">OSINT</span>
+          <span class="tag">Web Exploitation</span>
+          <span class="tag">Cryptography</span>
+          <span class="tag">Digital Forensics</span>
+          <span class="tag">Reverse Engineering</span>
+          <span class="tag">OSINT</span>
         </div>
       </article>
 
-      <!-- IR Practice -->
       <article class="card project-card reveal">
         <div>
           <div class="card-icon">🚨</div>
           <h3>Incident Response Practice</h3>
           <p style="color:var(--dim);font-size:.9rem">
-            Worked through ransomware, phishing, and data breach scenarios including triage, containment,
-            remediation, documentation, and escalation processes in real-world SOC simulations.
+            Worked through simulated ransomware, phishing, and data-breach scenarios covering
+            triage, investigation, containment, documentation, escalation, and remediation.
           </p>
         </div>
+
         <div class="tags">
-          <span class="tag">Ransomware</span><span class="tag">Phishing</span>
-          <span class="tag">Remediation</span><span class="tag">SOC Monitoring</span>
+          <span class="tag">Ransomware</span>
+          <span class="tag">Phishing</span>
+          <span class="tag">Triage</span>
+          <span class="tag">Remediation</span>
+          <span class="tag">SOC Monitoring</span>
         </div>
       </article>
 
@@ -859,190 +1145,274 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
+
     <div class="section-header reveal">
-      <p class="section-tag">// INITIATE CONTACT</p>
+      <p class="section-tag">// CONTACT</p>
       <h2 class="section-title">Let's connect.</h2>
-      <p class="section-subtitle">Open to entry-level cybersecurity roles, internships, SOC analyst opportunities, graduate programs, and projects where I can grow and contribute.</p>
+      <p class="section-subtitle">
+        Open to opportunities across IT Support, Service Desk, Desktop Support, Systems Administration,
+        SOC operations, cybersecurity analysis, incident response, and vulnerability management.
+      </p>
       <div class="section-line"></div>
     </div>
+
     <div class="contact-wrapper">
+
       <article class="card contact-card reveal">
-        <h3 style="font-family:'Orbitron',monospace;font-size:.9rem;letter-spacing:1px;color:var(--cyan)">// CONTACT DETAILS</h3>
+        <h3 style="font-family:'Orbitron',monospace;font-size:.9rem;letter-spacing:1px;color:var(--cyan)">
+          // CONTACT DETAILS
+        </h3>
+
         <ul class="contact-list">
           <li><strong>Email:</strong> <a href="mailto:rujohn.shakya123@gmail.com">rujohn.shakya123@gmail.com</a></li>
           <li><strong>Phone:</strong> <a href="tel:0416637663">0416 637 663</a></li>
-          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rujohn-shakya-8164732b6/" target="_blank">linkedin.com/in/rujohn-shakya</a></li>
-          <li><strong>Portfolio:</strong> <a href="https://rujohn14.github.io/Rujohn-Shakya-Portfolio/" target="_blank">rujohn14.github.io</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rujohn-shakya-8164732b6/" target="_blank" rel="noopener">linkedin.com/in/rujohn-shakya</a></li>
+          <li><strong>Portfolio:</strong> <a href="https://rujohn14.github.io/Rujohn-Shakya-Portfolio/" target="_blank" rel="noopener">rujohn14.github.io</a></li>
           <li><strong>Location:</strong> Sydney, NSW, Australia</li>
         </ul>
       </article>
+
       <article class="card reveal">
-        <h3 style="font-family:'Orbitron',monospace;font-size:.9rem;letter-spacing:1px;color:#fff;margin-bottom:18px">SEND A MESSAGE</h3>
+        <h3 style="font-family:'Orbitron',monospace;font-size:.9rem;letter-spacing:1px;color:#fff;margin-bottom:18px">
+          SEND A MESSAGE
+        </h3>
+
         <form action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="f5ad640e-dd65-4837-8dca-b11310718f8e">
           <input type="hidden" name="subject" value="New message from Rujohn's portfolio website">
           <input type="hidden" name="from_name" value="Rujohn Shakya Portfolio">
+
           <input type="text" name="name" placeholder="Your Name" required>
           <input type="email" name="email" placeholder="Your Email" required>
           <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">SEND MESSAGE</button>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">
+            SEND MESSAGE
+          </button>
         </form>
       </article>
+
     </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <span>RUJOHN SHAKYA</span> &nbsp;·&nbsp; CYBERSECURITY &nbsp;·&nbsp; SYDNEY, NSW &nbsp;·&nbsp; <span>© 2026</span>
+    <span>RUJOHN SHAKYA</span>
+    &nbsp;·&nbsp; IT SUPPORT & CYBERSECURITY
+    &nbsp;·&nbsp; SYDNEY, NSW
+    &nbsp;·&nbsp; <span>© 2026</span>
   </div>
 </footer>
 
 <script>
-/* ── CURSOR ── */
+/* CURSOR */
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function animCursor(){
-  cursor.style.left=mx+'px'; cursor.style.top=my+'px';
-  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX;
+  my = e.clientY;
+});
+
+(function animCursor() {
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+
+  rx += (mx - rx) * .12;
+  ry += (my - ry) * .12;
+
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+
   requestAnimationFrame(animCursor);
 })();
-document.querySelectorAll('a,button,.card,.timeline-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    cursor.style.transform='translate(-50%,-50%) scale(2.5)';
-    cursor.style.background='var(--green)';
-    ring.style.borderColor='var(--green)';
-    ring.style.transform='translate(-50%,-50%) scale(1.4)';
+
+document.querySelectorAll('a,button,.card,.timeline-item').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
+    cursor.style.background = 'var(--green)';
+    ring.style.borderColor = 'var(--green)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1.4)';
   });
-  el.addEventListener('mouseleave',()=>{
-    cursor.style.transform='translate(-50%,-50%) scale(1)';
-    cursor.style.background='var(--cyan)';
-    ring.style.borderColor='var(--cyan)';
-    ring.style.transform='translate(-50%,-50%) scale(1)';
+
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    cursor.style.background = 'var(--cyan)';
+    ring.style.borderColor = 'var(--cyan)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1)';
   });
 });
 
-/* ── MATRIX RAIN ── */
-const mc=document.getElementById('matrix-canvas');
-const mctx=mc.getContext('2d');
-function resizeMatrix(){mc.width=window.innerWidth;mc.height=window.innerHeight;}
+/* MATRIX */
+const mc = document.getElementById('matrix-canvas');
+const mctx = mc.getContext('2d');
+
+function resizeMatrix() {
+  mc.width = window.innerWidth;
+  mc.height = window.innerHeight;
+}
 resizeMatrix();
-const chars='アイウエオカキクケコサシスセソタチ01ABCDEFabcdef0123456789';
-let drops=[];
-function initDrops(){drops=Array(Math.floor(mc.width/20)).fill(0).map(()=>Math.random()*mc.height/20);}
+
+const chars = 'アイウエオカキクケコサシスセソタチ01ABCDEFabcdef0123456789';
+let drops = [];
+
+function initDrops() {
+  drops = Array(Math.floor(mc.width / 20))
+    .fill(0)
+    .map(() => Math.random() * mc.height / 20);
+}
 initDrops();
-function drawMatrix(){
-  mctx.fillStyle='rgba(2,8,16,.06)';
-  mctx.fillRect(0,0,mc.width,mc.height);
-  mctx.fillStyle='#00f5ff';
-  mctx.font='13px Share Tech Mono,monospace';
-  drops.forEach((y,i)=>{
-    mctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*20,y*20);
-    if(y*20>mc.height&&Math.random()>.975)drops[i]=0;
-    drops[i]+=.5;
+
+function drawMatrix() {
+  mctx.fillStyle = 'rgba(2,8,16,.06)';
+  mctx.fillRect(0, 0, mc.width, mc.height);
+
+  mctx.fillStyle = '#00f5ff';
+  mctx.font = '13px Share Tech Mono,monospace';
+
+  drops.forEach((y, i) => {
+    mctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 20, y * 20);
+
+    if (y * 20 > mc.height && Math.random() > .975) drops[i] = 0;
+    drops[i] += .5;
   });
 }
-setInterval(drawMatrix,50);
+setInterval(drawMatrix, 50);
 
-/* ── 2D PARTICLES ── */
-const pc=document.getElementById('particle-canvas');
-const pctx=pc.getContext('2d');
-function resizeParticles(){pc.width=window.innerWidth;pc.height=window.innerHeight;}
+/* 2D PARTICLES */
+const pc = document.getElementById('particle-canvas');
+const pctx = pc.getContext('2d');
+
+function resizeParticles() {
+  pc.width = window.innerWidth;
+  pc.height = window.innerHeight;
+}
 resizeParticles();
-const particles=Array.from({length:55},()=>({
-  x:Math.random()*pc.width,y:Math.random()*pc.height,
-  vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,
-  r:Math.random()*1.2+.4,alpha:Math.random()*.35+.08
+
+const particles = Array.from({length: 55}, () => ({
+  x: Math.random() * pc.width,
+  y: Math.random() * pc.height,
+  vx: (Math.random() - .5) * .35,
+  vy: (Math.random() - .5) * .35,
+  r: Math.random() * 1.2 + .4,
+  alpha: Math.random() * .35 + .08
 }));
-function drawParticles(){
-  pctx.clearRect(0,0,pc.width,pc.height);
-  particles.forEach((p,i)=>{
-    pctx.beginPath();pctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    pctx.fillStyle=`rgba(0,245,255,${p.alpha})`;pctx.fill();
-    p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0||p.x>pc.width)p.vx*=-1;
-    if(p.y<0||p.y>pc.height)p.vy*=-1;
-    for(let j=i+1;j<particles.length;j++){
-      const q=particles[j];const d=Math.hypot(p.x-q.x,p.y-q.y);
-      if(d<100){
-        pctx.beginPath();pctx.moveTo(p.x,p.y);pctx.lineTo(q.x,q.y);
-        pctx.strokeStyle=`rgba(0,245,255,${.045*(1-d/100)})`;
-        pctx.lineWidth=.5;pctx.stroke();
+
+function drawParticles() {
+  pctx.clearRect(0, 0, pc.width, pc.height);
+
+  particles.forEach((p, i) => {
+    pctx.beginPath();
+    pctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    pctx.fillStyle = `rgba(0,245,255,${p.alpha})`;
+    pctx.fill();
+
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > pc.width) p.vx *= -1;
+    if (p.y < 0 || p.y > pc.height) p.vy *= -1;
+
+    for (let j = i + 1; j < particles.length; j++) {
+      const q = particles[j];
+      const d = Math.hypot(p.x - q.x, p.y - q.y);
+
+      if (d < 100) {
+        pctx.beginPath();
+        pctx.moveTo(p.x, p.y);
+        pctx.lineTo(q.x, q.y);
+        pctx.strokeStyle = `rgba(0,245,255,${.045 * (1 - d / 100)})`;
+        pctx.lineWidth = .5;
+        pctx.stroke();
       }
     }
   });
+
   requestAnimationFrame(drawParticles);
 }
 drawParticles();
 
-/* ══════════════════════════════════════════════
-   THREE.JS  —  FULL 3D CYBER SCENE
-   ══════════════════════════════════════════════ */
-(function initThree(){
+/* THREE.JS BACKGROUND */
+(function initThree() {
   const script = document.createElement('script');
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
   script.onload = buildScene;
   document.head.appendChild(script);
 
-  function buildScene(){
-    const W = window.innerWidth, H = window.innerHeight;
+  function buildScene() {
+    const W = window.innerWidth;
+    const H = window.innerHeight;
     const canvas = document.getElementById('three-canvas');
-    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-    renderer.setSize(W,H);
-    renderer.setClearColor(0x000000,0);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true
+    });
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(W, H);
+    renderer.setClearColor(0x000000, 0);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60,W/H,0.1,1000);
-    camera.position.set(0,0,28);
 
-    // ── mouse parallax
-    let mouseX=0,mouseY=0;
-    document.addEventListener('mousemove',e=>{
-      mouseX=(e.clientX/window.innerWidth-.5)*2;
-      mouseY=(e.clientY/window.innerHeight-.5)*2;
+    const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 1000);
+    camera.position.set(0, 0, 28);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let scrollY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = (e.clientX / window.innerWidth - .5) * 2;
+      mouseY = (e.clientY / window.innerHeight - .5) * 2;
     });
 
-    // ── scroll rotation
-    let scrollY=0;
-    window.addEventListener('scroll',()=>{ scrollY=window.scrollY; });
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY;
+    });
 
-    // ─────────────────────────────────────────
-    // 1. WIREFRAME CYBER-GLOBE
-    // ─────────────────────────────────────────
-    const globeGeo = new THREE.SphereGeometry(7,32,32);
+    const globeGeo = new THREE.SphereGeometry(7, 32, 32);
     const globeMat = new THREE.MeshBasicMaterial({
-      color:0x00f5ff, wireframe:true, transparent:true, opacity:.13
+      color: 0x00f5ff,
+      wireframe: true,
+      transparent: true,
+      opacity: .13
     });
-    const globe = new THREE.Mesh(globeGeo,globeMat);
-    globe.position.set(9,-1,0);
+
+    const globe = new THREE.Mesh(globeGeo, globeMat);
+    globe.position.set(9, -1, 0);
     scene.add(globe);
 
-    // inner glowing solid sphere
-    const innerGeo = new THREE.SphereGeometry(6.6,32,32);
+    const innerGeo = new THREE.SphereGeometry(6.6, 32, 32);
     const innerMat = new THREE.MeshBasicMaterial({
-      color:0x001a2e, transparent:true, opacity:.55
+      color: 0x001a2e,
+      transparent: true,
+      opacity: .55
     });
-    const innerSphere = new THREE.Mesh(innerGeo,innerMat);
+
+    const innerSphere = new THREE.Mesh(innerGeo, innerMat);
     innerSphere.position.copy(globe.position);
     scene.add(innerSphere);
 
-    // ─────────────────────────────────────────
-    // 2. ORBITING RINGS (3 axes)
-    // ─────────────────────────────────────────
     const ringConfigs = [
-      {r:8.2, tube:.06, rot:[0,0,0],      color:0x00f5ff, speed:.4},
-      {r:8.2, tube:.06, rot:[Math.PI/2,0,0], color:0x00ff88, speed:-.3},
-      {r:8.2, tube:.06, rot:[Math.PI/4,Math.PI/4,0], color:0x9b5de5, speed:.25},
-      {r:9.5, tube:.04, rot:[.6,.3,0],    color:0x00f5ff, speed:.18},
+      {r: 8.2, tube: .06, rot: [0, 0, 0], color: 0x00f5ff, speed: .4},
+      {r: 8.2, tube: .06, rot: [Math.PI / 2, 0, 0], color: 0x00ff88, speed: -.3},
+      {r: 8.2, tube: .06, rot: [Math.PI / 4, Math.PI / 4, 0], color: 0x9b5de5, speed: .25},
+      {r: 9.5, tube: .04, rot: [.6, .3, 0], color: 0x00f5ff, speed: .18},
     ];
-    const rings = ringConfigs.map(cfg=>{
+
+    const rings = ringConfigs.map(cfg => {
       const geo = new THREE.TorusGeometry(cfg.r, cfg.tube, 8, 120);
-      const mat = new THREE.MeshBasicMaterial({color:cfg.color, transparent:true, opacity:.55});
-      const mesh = new THREE.Mesh(geo,mat);
+      const mat = new THREE.MeshBasicMaterial({
+        color: cfg.color,
+        transparent: true,
+        opacity: .55
+      });
+
+      const mesh = new THREE.Mesh(geo, mat);
       mesh.rotation.set(...cfg.rot);
       mesh.position.copy(globe.position);
       mesh.userData.speed = cfg.speed;
@@ -1050,207 +1420,210 @@ drawParticles();
       return mesh;
     });
 
-    // ─────────────────────────────────────────
-    // 3. ORBITING NODES on rings
-    // ─────────────────────────────────────────
-    const nodeColors = [0x00f5ff,0x00ff88,0x9b5de5,0xff003c];
+    const nodeColors = [0x00f5ff, 0x00ff88, 0x9b5de5, 0xff003c];
     const orbitNodes = [];
-    for(let i=0;i<12;i++){
-      const geo = new THREE.OctahedronGeometry(.2,0);
+
+    for (let i = 0; i < 12; i++) {
+      const geo = new THREE.OctahedronGeometry(.2, 0);
       const mat = new THREE.MeshBasicMaterial({
-        color: nodeColors[i%4], transparent:true, opacity:.9
+        color: nodeColors[i % 4],
+        transparent: true,
+        opacity: .9
       });
-      const mesh = new THREE.Mesh(geo,mat);
-      const angle = (i/12)*Math.PI*2;
-      const radius = 8.2 + (Math.random()-.5)*1.5;
-      mesh.userData = {angle, radius, speed:(Math.random()*.4+.2)*(Math.random()<.5?1:-1), ax:Math.random()*Math.PI, ay:Math.random()*Math.PI};
+
+      const mesh = new THREE.Mesh(geo, mat);
+
+      mesh.userData = {
+        angle: (i / 12) * Math.PI * 2,
+        radius: 8.2 + (Math.random() - .5) * 1.5,
+        speed: (Math.random() * .4 + .2) * (Math.random() < .5 ? 1 : -1)
+      };
+
       scene.add(mesh);
       orbitNodes.push(mesh);
     }
 
-    // ─────────────────────────────────────────
-    // 4. FLOATING GEOMETRIC SHARDS (left side)
-    // ─────────────────────────────────────────
     const shardGeos = [
-      new THREE.TetrahedronGeometry(1,0),
-      new THREE.OctahedronGeometry(.8,0),
-      new THREE.IcosahedronGeometry(.7,0),
-      new THREE.BoxGeometry(.9,.9,.9),
+      new THREE.TetrahedronGeometry(1, 0),
+      new THREE.OctahedronGeometry(.8, 0),
+      new THREE.IcosahedronGeometry(.7, 0),
+      new THREE.BoxGeometry(.9, .9, .9),
     ];
+
     const shards = [];
-    for(let i=0;i<22;i++){
-      const geo = shardGeos[i%shardGeos.length];
-      const col = nodeColors[i%4];
-      const mat = new THREE.MeshBasicMaterial({color:col,wireframe:true,transparent:true,opacity:.35+Math.random()*.3});
-      const mesh = new THREE.Mesh(geo,mat);
+
+    for (let i = 0; i < 22; i++) {
+      const geo = shardGeos[i % shardGeos.length];
+      const col = nodeColors[i % 4];
+
+      const mat = new THREE.MeshBasicMaterial({
+        color: col,
+        wireframe: true,
+        transparent: true,
+        opacity: .35 + Math.random() * .3
+      });
+
+      const mesh = new THREE.Mesh(geo, mat);
+
       mesh.position.set(
-        (Math.random()-.5)*50,
-        (Math.random()-.5)*35,
-        (Math.random()-.5)*18 - 5
+        (Math.random() - .5) * 50,
+        (Math.random() - .5) * 35,
+        (Math.random() - .5) * 18 - 5
       );
-      const s = .4+Math.random()*1.1;
+
+      const s = .4 + Math.random() * 1.1;
       mesh.scale.setScalar(s);
+
       mesh.userData = {
-        rx: (Math.random()-.5)*.008,
-        ry: (Math.random()-.5)*.008,
-        rz: (Math.random()-.5)*.008,
-        floatSpeed: .0005+Math.random()*.001,
-        floatAmp: .4+Math.random()*.8,
-        floatOffset: Math.random()*Math.PI*2,
+        rx: (Math.random() - .5) * .008,
+        ry: (Math.random() - .5) * .008,
+        rz: (Math.random() - .5) * .008,
+        floatSpeed: .0005 + Math.random() * .001,
+        floatAmp: .4 + Math.random() * .8,
+        floatOffset: Math.random() * Math.PI * 2,
         baseY: mesh.position.y
       };
+
       scene.add(mesh);
       shards.push(mesh);
     }
 
-    // ─────────────────────────────────────────
-    // 5. CYBER GRID (floor plane)
-    // ─────────────────────────────────────────
-    const gridHelper = new THREE.GridHelper(80,40,0x00f5ff,0x001a2e);
-    gridHelper.position.set(0,-14,0);
+    const gridHelper = new THREE.GridHelper(80, 40, 0x00f5ff, 0x001a2e);
+    gridHelper.position.set(0, -14, 0);
     gridHelper.material.transparent = true;
     gridHelper.material.opacity = .18;
     scene.add(gridHelper);
 
-    // ─────────────────────────────────────────
-    // 6. STAR FIELD (deep background)
-    // ─────────────────────────────────────────
     const starGeo = new THREE.BufferGeometry();
     const starCount = 600;
-    const starPos = new Float32Array(starCount*3);
-    for(let i=0;i<starCount*3;i++) starPos[i]=(Math.random()-.5)*300;
-    starGeo.setAttribute('position',new THREE.BufferAttribute(starPos,3));
-    const starMat = new THREE.PointsMaterial({color:0xffffff,size:.25,transparent:true,opacity:.55});
-    scene.add(new THREE.Points(starGeo,starMat));
+    const starPos = new Float32Array(starCount * 3);
 
-    // ─────────────────────────────────────────
-    // 7. ENERGY BEAM LINES from globe
-    // ─────────────────────────────────────────
-    const beams = [];
-    for(let i=0;i<8;i++){
-      const pts=[new THREE.Vector3(0,0,0), new THREE.Vector3((Math.random()-.5)*40,(Math.random()-.5)*30,(Math.random()-.5)*10)];
-      const geo = new THREE.BufferGeometry().setFromPoints(pts);
-      const mat = new THREE.LineBasicMaterial({
-        color: nodeColors[i%4], transparent:true, opacity:.06+Math.random()*.08
-      });
-      const line = new THREE.Line(geo,mat);
-      line.position.copy(globe.position);
-      line.userData = {pulseOffset: Math.random()*Math.PI*2, pulseSpeed: .8+Math.random()};
-      scene.add(line);
-      beams.push(line);
+    for (let i = 0; i < starCount * 3; i++) {
+      starPos[i] = (Math.random() - .5) * 300;
     }
 
-    // ─────────────────────────────────────────
-    // 8. FLOATING HEX RING (front-left accent)
-    // ─────────────────────────────────────────
-    const hexRing = new THREE.TorusGeometry(3.5,.05,6,6);
-    const hexMat  = new THREE.MeshBasicMaterial({color:0x00ff88,transparent:true,opacity:.35});
-    const hexMesh = new THREE.Mesh(hexRing,hexMat);
-    hexMesh.position.set(-12,3,-2);
-    scene.add(hexMesh);
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
 
-    const hexRing2 = new THREE.TorusGeometry(2.2,.04,6,6);
-    const hexMat2  = new THREE.MeshBasicMaterial({color:0x9b5de5,transparent:true,opacity:.3});
-    const hexMesh2 = new THREE.Mesh(hexRing2,hexMat2);
-    hexMesh2.position.set(-9,-5,-1);
-    scene.add(hexMesh2);
+    const starMat = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: .25,
+      transparent: true,
+      opacity: .55
+    });
 
-    // ─────────────────────────────────────────
-    // ANIMATE
-    // ─────────────────────────────────────────
-    let t=0;
-    function animate(){
+    scene.add(new THREE.Points(starGeo, starMat));
+
+    let t = 0;
+
+    function animate() {
       requestAnimationFrame(animate);
       t += .012;
 
-      // parallax camera drift
-      camera.position.x += (mouseX*3 - camera.position.x)*.025;
-      camera.position.y += (-mouseY*2 - camera.position.y)*.025;
-      camera.lookAt(0,0,0);
+      camera.position.x += (mouseX * 3 - camera.position.x) * .025;
+      camera.position.y += (-mouseY * 2 - camera.position.y) * .025;
+      camera.lookAt(0, 0, 0);
 
-      // scroll: tilt scene
       scene.rotation.x = scrollY * .00025;
 
-      // globe slow spin
       globe.rotation.y += .003;
       globe.rotation.x += .001;
       innerSphere.rotation.y += .002;
 
-      // rings orbit
-      rings.forEach(r=>{ r.rotation.z += r.userData.speed*.012; r.rotation.y += r.userData.speed*.006; });
-
-      // orbit nodes
-      orbitNodes.forEach(n=>{
-        n.userData.angle += n.userData.speed * .012;
-        const gp = globe.position;
-        n.position.x = gp.x + Math.cos(n.userData.angle)*n.userData.radius;
-        n.position.y = gp.y + Math.sin(n.userData.angle*1.3)*4;
-        n.position.z = gp.z + Math.sin(n.userData.angle)*n.userData.radius*.5;
-        n.rotation.x += .03; n.rotation.y += .02;
+      rings.forEach(r => {
+        r.rotation.z += r.userData.speed * .012;
+        r.rotation.y += r.userData.speed * .006;
       });
 
-      // shards float & spin
-      shards.forEach(s=>{
+      orbitNodes.forEach(n => {
+        n.userData.angle += n.userData.speed * .012;
+
+        const gp = globe.position;
+
+        n.position.x = gp.x + Math.cos(n.userData.angle) * n.userData.radius;
+        n.position.y = gp.y + Math.sin(n.userData.angle * 1.3) * 4;
+        n.position.z = gp.z + Math.sin(n.userData.angle) * n.userData.radius * .5;
+
+        n.rotation.x += .03;
+        n.rotation.y += .02;
+      });
+
+      shards.forEach(s => {
         s.rotation.x += s.userData.rx;
         s.rotation.y += s.userData.ry;
         s.rotation.z += s.userData.rz;
-        s.position.y = s.userData.baseY + Math.sin(t*s.userData.floatSpeed*80 + s.userData.floatOffset)*s.userData.floatAmp;
+
+        s.position.y =
+          s.userData.baseY +
+          Math.sin(t * s.userData.floatSpeed * 80 + s.userData.floatOffset) *
+          s.userData.floatAmp;
       });
 
-      // grid slow drift
-      gridHelper.position.z = (gridHelper.position.z - .04)%2;
+      gridHelper.position.z = (gridHelper.position.z - .04) % 2;
 
-      // beams pulse opacity
-      beams.forEach(b=>{
-        b.material.opacity = .04 + .09*(.5+.5*Math.sin(t*b.userData.pulseSpeed*5 + b.userData.pulseOffset));
-      });
-
-      // hex rings spin
-      hexMesh.rotation.z  += .008; hexMesh.rotation.x  += .003;
-      hexMesh2.rotation.z -= .006; hexMesh2.rotation.y += .004;
-
-      renderer.render(scene,camera);
+      renderer.render(scene, camera);
     }
+
     animate();
 
-    // resize
-    window.addEventListener('resize',()=>{
-      const W=window.innerWidth,H=window.innerHeight;
-      camera.aspect=W/H; camera.updateProjectionMatrix();
-      renderer.setSize(W,H);
+    window.addEventListener('resize', () => {
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+
+      camera.aspect = W / H;
+      camera.updateProjectionMatrix();
+      renderer.setSize(W, H);
     });
   }
 })();
 
-/* ── SCROLL REVEAL ── */
-const revealObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-},{threshold:.13});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+/* SCROLL REVEAL */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, {threshold: .13});
 
-/* ── SKILL BAR ANIMATION ── */
-const barObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.bar span').forEach(span=>{
-        const w=span.style.getPropertyValue('--w')||span.getAttribute('style').match(/--w:(\S+)/)?.[1];
-        if(w){ span.style.width=w; span.closest('.bar').classList.add('animated'); }
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* SKILL BAR ANIMATION */
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.bar span').forEach(span => {
+        const w =
+          span.style.getPropertyValue('--w') ||
+          span.getAttribute('style').match(/--w:(\S+)/)?.[1];
+
+        if (w) {
+          span.style.width = w;
+          span.closest('.bar').classList.add('animated');
+        }
       });
     }
   });
-},{threshold:.3});
-document.querySelectorAll('.skill-card').forEach(el=>barObs.observe(el));
+}, {threshold: .3});
 
-/* ── TERMINAL TYPEWRITER ── */
-const tlines=document.querySelectorAll('.terminal-body > div');
-tlines.forEach((line,i)=>{
-  line.style.opacity='0';
-  setTimeout(()=>{ line.style.opacity='1'; line.style.transition='opacity .2s'; },900+i*140);
+document.querySelectorAll('.skill-card').forEach(el => barObs.observe(el));
+
+/* TERMINAL REVEAL */
+const tlines = document.querySelectorAll('.terminal-body > div');
+
+tlines.forEach((line, i) => {
+  line.style.opacity = '0';
+
+  setTimeout(() => {
+    line.style.opacity = '1';
+    line.style.transition = 'opacity .2s';
+  }, 900 + i * 140);
 });
 
-/* ── RESIZE ── */
-window.addEventListener('resize',()=>{resizeMatrix();initDrops();resizeParticles();});
-
+/* RESIZE */
+window.addEventListener('resize', () => {
+  resizeMatrix();
+  initDrops();
+  resizeParticles();
+});
 </script>
+
 </body>
 </html>
